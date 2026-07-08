@@ -1,115 +1,111 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { Clock, Calendar, Gift, MessageSquare } from 'lucide-react';
+import modelo from '../assets/modelo 1.jpg';
 
 export default function HowItWorks() {
-  const steps = [
-    {
-      number: "01",
-      title: "Descreva sua visão",
-      description: "Conte para nossa IA sobre seu negócio e estilo em linguagem natural. Ela entende o contexto instantaneamente."
-    },
-    {
-      number: "02",
-      title: "IA Design System",
-      description: "O motor processa sua ideia e cria uma identidade visual única, desde a paleta de cores até a tipografia."
-    },
-    {
-      number: "03",
-      title: "Código Pronto",
-      description: "Visualize, aprove e receba o código React limpo ou publique direto na nossa infraestrutura global."
-    }
-  ];
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
 
   return (
-    <section id="como-funciona" className="section-padding bg-slate-900 text-white relative overflow-hidden">
-      {/* Immersive background elements */}
-      <div className="absolute top-0 right-0 w-[50%] h-full bg-indigo-500/10 blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[40%] h-[60%] bg-purple-500/10 blur-[120px] pointer-events-none" />
+    <section ref={sectionRef} className="py-10 md:py-20 bg-transparent relative overflow-hidden">
+      {/* Discreet Background Image with Advanced Masking */}
+      <motion.div 
+        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }}
+        className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+      >
+        <img 
+          src={modelo} 
+          alt="" 
+          className="w-full h-full object-cover opacity-[0.12] grayscale-[30%] scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent" />
+      </motion.div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-20 items-center">
-          
-          <div className="flex-1 max-w-2xl">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-black mb-8 leading-tight"
-            >
-              Do conceito ao <br />
-              <span className="text-indigo-400">código vivo</span> em minutos.
-            </motion.h2>
-            <p className="text-xl text-slate-400 mb-14 leading-relaxed font-medium">
-              Eliminamos a barreira entre ideia e execução. Sem curva de aprendizado, sem limites criativos.
-            </p>
-            
-            <div className="space-y-14">
-              {steps.map((step, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  className="flex gap-8 group"
-                >
-                  <div className="flex-shrink-0 flex flex-col items-center">
-                    <div className="w-14 h-14 rounded-2xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center font-heading text-2xl font-bold text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-500">
-                      {step.number}
-                    </div>
-                    {index !== steps.length - 1 && (
-                      <div className="w-px h-full bg-gradient-to-b from-indigo-500/30 to-transparent my-2" />
-                    )}
-                  </div>
-                  <div className="pt-2">
-                    <h3 className="text-2xl font-bold mb-3 group-hover:text-indigo-300 transition-colors">{step.title}</h3>
-                    <p className="text-slate-400 leading-relaxed font-medium text-lg">{step.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+      <div className="max-w-7xl lg:max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-4xl mx-auto mb-16 px-4">
+          <div className="bg-[#1a232e] py-4 md:py-6 px-6 md:px-10 rounded-2xl shadow-2xl relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <h2 className="text-white text-lg md:text-3xl font-serif italic text-center flex items-center justify-center gap-4 relative z-10">
+              <span className="text-brand-light/40 animate-pulse">◇</span>
+              Como funciona nosso atendimento?
+              <span className="text-brand-light/40 animate-pulse">◇</span>
+            </h2>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/80 backdrop-blur-sm p-6 md:p-12 lg:p-8 xl:p-10 rounded-[28px] md:rounded-[2.5rem] flex flex-col md:flex-row gap-6 md:gap-10 items-center md:items-start shadow-sm border border-slate-100 hover:border-brand-base/20 hover:shadow-premium transition-all duration-500 group"
+          >
+            <div className="flex-shrink-0 w-20 h-20 rounded-full border-2 border-brand-base/10 flex items-center justify-center text-brand-base bg-brand-base/5 group-hover:bg-brand-base group-hover:text-white transition-all duration-500 shadow-inner">
+              <Clock className="w-9 h-9 stroke-[1.5]" />
             </div>
-          </div>
+            <div className="text-center md:text-left">
+              <h3 className="text-xl md:text-2xl font-serif text-slate-900 mb-3 md:mb-4 font-bold tracking-tight">Consulta personalizada</h3>
+              <p className="text-[15px] text-slate-500 leading-relaxed font-medium">
+                Levamos o tempo necessário para te atender com total atenção, entender suas necessidades e preocupações.
+              </p>
+            </div>
+          </motion.div>
 
-          <div className="flex-1 w-full relative">
-            {/* Visual demo card */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative aspect-square rounded-[3rem] bg-gradient-to-br from-white/10 to-white/5 border border-white/10 p-8 shadow-2xl overflow-hidden backdrop-blur-sm"
-            >
-               {/* Glowing effect inside */}
-               <div className="absolute -top-20 -right-20 w-64 h-64 bg-indigo-500/30 rounded-full blur-[80px]" />
-               
-               <div className="h-full border border-white/5 rounded-[2rem] bg-slate-950/50 p-6 flex flex-col gap-6">
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-2">
-                      <div className="w-3 h-3 rounded-full bg-white/20"></div>
-                      <div className="w-3 h-3 rounded-full bg-white/20"></div>
-                    </div>
-                    <div className="px-3 py-1 bg-indigo-500/20 rounded-full text-[10px] font-bold text-indigo-400 uppercase tracking-tighter">AI Processing</div>
-                  </div>
-                  
-                  <div className="flex-1 flex flex-col items-center justify-center gap-8">
-                    <div className="relative">
-                      <motion.div 
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                        className="w-32 h-32 rounded-full border-2 border-indigo-500/30 border-t-indigo-500" 
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-20 h-20 rounded-full bg-indigo-500/20 blur-xl animate-pulse" />
-                      </div>
-                    </div>
-                    <div className="space-y-3 w-full max-w-[200px]">
-                      <div className="h-2 w-full bg-white/10 rounded-full" />
-                      <div className="h-2 w-3/4 bg-white/10 rounded-full mx-auto" />
-                    </div>
-                  </div>
-               </div>
-            </motion.div>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/80 backdrop-blur-sm p-6 md:p-12 lg:p-8 xl:p-10 rounded-[28px] md:rounded-[2.5rem] flex flex-col md:flex-row gap-6 md:gap-10 items-center md:items-start shadow-sm border border-slate-100 hover:border-brand-base/20 hover:shadow-premium transition-all duration-500 group"
+          >
+            <div className="flex-shrink-0 w-20 h-20 rounded-full border-2 border-brand-base/10 flex items-center justify-center text-brand-base bg-brand-base/5 group-hover:bg-brand-base group-hover:text-white transition-all duration-500 shadow-inner">
+              <Calendar className="w-9 h-9 stroke-[1.5]" />
+            </div>
+            <div className="text-center md:text-left">
+              <h3 className="text-xl md:text-2xl font-serif text-slate-900 mb-3 md:mb-4 font-bold tracking-tight">Retorno em até 30 dias</h3>
+              <p className="text-[15px] text-slate-500 leading-relaxed font-medium">
+                Quando necessário, garantimos o seu acompanhamento e ajustes precisos sem custos adicionais.
+              </p>
+            </div>
+          </motion.div>
 
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/80 backdrop-blur-sm p-6 md:p-12 lg:p-8 xl:p-10 rounded-[28px] md:rounded-[2.5rem] flex flex-col md:flex-row gap-6 md:gap-10 items-center md:items-start shadow-sm border border-slate-100 hover:border-brand-base/20 hover:shadow-premium transition-all duration-500 group"
+          >
+            <div className="flex-shrink-0 w-20 h-20 rounded-full border-2 border-brand-base/10 flex items-center justify-center text-brand-base bg-brand-base/5 group-hover:bg-brand-base group-hover:text-white transition-all duration-500 shadow-inner">
+              <Gift className="w-9 h-9 stroke-[1.5]" />
+            </div>
+            <div className="text-center md:text-left">
+              <h3 className="text-xl md:text-2xl font-serif text-slate-900 mb-3 md:mb-4 font-bold tracking-tight">Receba um mimo</h3>
+              <p className="text-[15px] text-slate-500 leading-relaxed font-medium">
+                Cuidamos de cada detalhe para que você se sinta valorizado. Preparamos uma experiência de boas-vindas.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/80 backdrop-blur-sm p-6 md:p-12 lg:p-8 xl:p-10 rounded-[28px] md:rounded-[2.5rem] flex flex-col md:flex-row gap-6 md:gap-10 items-center md:items-start shadow-sm border border-slate-100 hover:border-brand-base/20 hover:shadow-premium transition-all duration-500 group"
+          >
+            <div className="flex-shrink-0 w-20 h-20 rounded-full border-2 border-brand-base/10 flex items-center justify-center text-brand-base bg-brand-base/5 group-hover:bg-brand-base group-hover:text-white transition-all duration-500 shadow-inner">
+              <MessageSquare className="w-9 h-9 stroke-[1.5]" />
+            </div>
+            <div className="text-center md:text-left">
+              <h3 className="text-xl md:text-2xl font-serif text-slate-900 mb-3 md:mb-4 font-bold tracking-tight">Agendamento Online</h3>
+              <p className="text-[15px] text-slate-500 leading-relaxed font-medium">
+                Agende sua avaliação com apenas alguns cliques, diretamente pelo WhatsApp ou site, com praticidade.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

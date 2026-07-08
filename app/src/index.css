@@ -1,40 +1,82 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;700&display=swap');
+@import "tailwindcss";
 
 @theme {
   --color-primary: #0F172A;
   --color-secondary: #475569;
-  --color-accent: #6366F1; /* Indigo */
-  --color-accent-secondary: #8B5CF6; /* Violet */
-  --color-cta: #6366F1;
-  --color-cta-hover: #4F46E5;
+  
+  /* Nova Paleta de Cores (Dusty Rose, Mauve & Deep Plum) */
+  --color-brand-dark: #1D0509;
+  --color-brand-base: #6B2D3A;
+  --color-brand-light: #B5526C;
+  --color-brand-soft: #8B3B4B;
+
+  --color-accent: #8B3B4B;
+  --color-accent-secondary: #B5526C;
+  --color-cta: #1D0509;
+  --color-cta-hover: #6B2D3A;
+  
   --color-background: #FFFFFF;
-  --color-background-soft: #F8FAFC;
-  --color-text: #0F172A;
-  --color-text-muted: #64748B;
+  --color-background-soft: #FAF2F5;
+  --color-text: #334155;
+  --color-text-muted: #94a3b8;
 
   --font-sans: "Inter", "DM Sans", system-ui, -apple-system, sans-serif;
   --font-heading: "Satoshi", "Inter", system-ui, -apple-system, sans-serif;
 
-  --shadow-premium: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
-  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --shadow-premium: 0 20px 25px -5px rgb(13 39 69 / 0.08), 0 8px 10px -6px rgb(13 39 69 / 0.05);
+  --shadow-glass: 0 8px 32px 0 rgba(13, 39, 69, 0.07);
 }
 
 @layer base {
   html {
-    @apply scroll-smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  /* Lenis Smooth Scroll Configuration */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  @media (max-width: 768px) {
+    html {
+      font-size: 13.5px !important;
+    }
   }
 
   body {
     @apply bg-background text-text font-sans antialiased;
+    background-color: #FFFFFF !important;
+    color: #334155 !important;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   
   h1, h2, h3, h4 {
     @apply font-heading tracking-tight;
+  }
+
+  /* Feedback de Toque Mobile & Rolagem Inercial Fluida */
+  @media (max-width: 768px) {
+    html, body {
+      -webkit-overflow-scrolling: touch !important;
+    }
+    button:active, a:active {
+      transform: scale(0.97) !important;
+      transition: transform 0.1s ease !important;
+    }
   }
 }
 
@@ -56,7 +98,7 @@
   }
 
   .section-padding {
-    @apply py-24 md:py-32;
+    @apply py-12 md:py-32;
   }
 
   .btn-primary {
@@ -65,5 +107,16 @@
 
   .btn-secondary {
     @apply px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-2xl font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 active:scale-[0.98];
+  }
+
+  .animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 60s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 }

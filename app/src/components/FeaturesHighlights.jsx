@@ -39,7 +39,7 @@ export default function FeaturesHighlights() {
 
   return (
     <section id="recursos" className="section-padding bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl lg:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-20">
           <motion.h2 
             initial={{ opacity: 0, x: -20 }}
