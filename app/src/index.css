@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -21,8 +21,16 @@
   --color-text: #334155;
   --color-text-muted: #94a3b8;
 
-  --font-sans: "Inter", "DM Sans", system-ui, -apple-system, sans-serif;
-  --font-heading: "Satoshi", "Inter", system-ui, -apple-system, sans-serif;
+  /* Rosé gold tirado do logo: cor de destaque única do site */
+  --color-rose-gold: #DAA78C;
+  --color-rose-gold-light: #EBC9B2;
+  --color-rose-gold-dark: #A8705A;
+  --color-vinho: #2A0A10;
+  --color-marfim: #FBF7F4;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
 
   --shadow-premium: 0 20px 25px -5px rgb(13 39 69 / 0.08), 0 8px 10px -6px rgb(13 39 69 / 0.05);
   --shadow-glass: 0 8px 32px 0 rgba(13, 39, 69, 0.07);
@@ -64,8 +72,13 @@
     overflow-x: clip;
   }
   
-  h1, h2, h3, h4 {
-    @apply font-heading tracking-tight;
+  h1, h2 {
+    @apply font-heading;
+    letter-spacing: -0.01em;
+  }
+
+  h3, h4 {
+    @apply font-sans tracking-tight;
   }
 
   /* Feedback de Toque Mobile & Rolagem Inercial Fluida */
@@ -107,6 +120,76 @@
 
   .btn-secondary {
     @apply px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-2xl font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 active:scale-[0.98];
+  }
+
+  /* Rótulo acima dos títulos: fio + texto espaçado em rosé gold */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-rose-gold-dark);
+  }
+
+  .eyebrow::before,
+  .eyebrow-center::after {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
+  }
+
+  .eyebrow-dark {
+    color: var(--color-rose-gold);
+  }
+
+  /* Botão principal: rosé gold com texto vinho */
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #F0D2BE 0%, #DAA78C 55%, #C48D72 100%);
+    color: var(--color-vinho);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    box-shadow: 0 14px 34px -12px rgba(218, 167, 140, 0.65);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 20px 44px -12px rgba(218, 167, 140, 0.8);
+  }
+
+  /* Botão secundário em fundo escuro: contorno fino */
+  .btn-outline-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: border-color 0.4s ease, color 0.4s ease, background-color 0.4s ease;
+  }
+
+  .btn-outline-light:hover {
+    border-color: var(--color-rose-gold);
+    color: var(--color-rose-gold-light);
+    background-color: rgba(255, 255, 255, 0.04);
   }
 
   .animate-marquee {

@@ -2,53 +2,109 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/Logonav.png" />
-    <script>
-      (function() {
-        const img = new Image();
-        img.src = '/Logonav.png';
-        img.crossOrigin = 'Anonymous';
-        img.onload = function() {
-          const canvas = document.createElement('canvas');
-          const zoom = 1.2; // Aumenta minimamente a logo
-          const size = Math.max(img.width, img.height);
-          canvas.width = size;
-          canvas.height = size;
-          const ctx = canvas.getContext('2d');
-          
-          // Center and scale the image in a square canvas
-          const drawW = img.width * zoom;
-          const drawH = img.height * zoom;
-          const x = (size - drawW) / 2;
-          const y = (size - drawH) / 2;
-          ctx.drawImage(img, x, y, drawW, drawH);
-          
-          const imageData = ctx.getImageData(0, 0, size, size);
-          const data = imageData.data;
-          
-          for (let i = 0; i < data.length; i += 4) {
-            // If the pixel is very close to white, make it transparent
-            if (data[i] > 235 && data[i+1] > 235 && data[i+2] > 235) {
-              data[i+3] = 0;
-            }
-          }
-          
-          ctx.putImageData(imageData, 0, 0);
-          
-          const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-          link.type = 'image/png';
-          link.rel = 'shortcut icon';
-          link.href = canvas.toDataURL('image/png');
-          document.getElementsByTagName('head')[0].appendChild(link);
-        };
-      })();
-    </script>
-    <meta name="color-scheme" content="dark" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dra. Kamille Gallego Vieira | Dentista em São Carlos</title>
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#1D0509" />
+
+    <!-- SEO: se o domínio mudar, atualize o endereço aqui, no sitemap.xml e no robots.txt -->
+    <title>Dentista em São Carlos | Dra. Kamille Gallego Vieira · Lentes em Resina</title>
+    <meta name="description" content="Dra. Kamille Gallego Vieira, dentista em São Carlos - SP (CRO-SP 170569). Lentes em resina, clareamento dental, limpeza, restaurações, canal e urgências no Medical Center. Agende pelo WhatsApp." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://drakamillevieira.netlify.app/" />
+    <meta name="geo.region" content="BR-SP" />
+    <meta name="geo.placename" content="São Carlos" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Compartilhamento (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Dra. Kamille Gallego Vieira" />
+    <meta property="og:title" content="Dentista em São Carlos | Dra. Kamille Gallego Vieira" />
+    <meta property="og:description" content="Lentes em resina, clareamento e tratamentos odontológicos com planejamento personalizado. Agende sua avaliação." />
+    <meta property="og:url" content="https://drakamillevieira.netlify.app/" />
+    <meta property="og:image" content="https://drakamillevieira.netlify.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Dados estruturados: devem bater com o Perfil da Empresa no Google (nome, endereço e telefone) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Dentist",
+          "@id": "https://drakamillevieira.netlify.app/#consultorio",
+          "name": "Dra. Kamille Gallego Vieira - Dentista em São Carlos",
+          "url": "https://drakamillevieira.netlify.app/",
+          "image": "https://drakamillevieira.netlify.app/og-image.jpg",
+          "logo": "https://drakamillevieira.netlify.app/icon-512.png",
+          "telephone": "+55-16-99625-7573",
+          "description": "Consultório odontológico da Dra. Kamille Gallego Vieira (CRO-SP 170569) em São Carlos - SP: lentes em resina, clareamento dental, limpeza profissional, restaurações, tratamento de canal e urgências.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "R. Maestro João Seppe, 900 - Medical Center",
+            "addressLocality": "São Carlos",
+            "addressRegion": "SP",
+            "postalCode": "13561-180",
+            "addressCountry": "BR"
+          },
+          "areaServed": { "@type": "City", "name": "São Carlos" },
+          "sameAs": ["https://www.instagram.com/dra.kamillevieira/"],
+          "hasMap": "https://www.google.com/maps/search/?api=1&query=Medical%20Center%2C%20R.%20Maestro%20Jo%C3%A3o%20Seppe%2C%20900%2C%20S%C3%A3o%20Carlos%20-%20SP",
+          "availableService": [
+            { "@type": "MedicalProcedure", "name": "Lentes em resina" },
+            { "@type": "MedicalProcedure", "name": "Clareamento dental" },
+            { "@type": "MedicalProcedure", "name": "Limpeza profissional" },
+            { "@type": "MedicalProcedure", "name": "Restauração dentária" },
+            { "@type": "MedicalProcedure", "name": "Tratamento de canal (endodontia)" },
+            { "@type": "MedicalProcedure", "name": "Urgência odontológica" }
+          ],
+          "employee": { "@id": "https://drakamillevieira.netlify.app/#dra-kamille" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://drakamillevieira.netlify.app/#dra-kamille",
+          "name": "Kamille Gallego Vieira",
+          "honorificPrefix": "Dra.",
+          "jobTitle": "Cirurgiã-dentista",
+          "identifier": "CRO-SP 170569",
+          "worksFor": { "@id": "https://drakamillevieira.netlify.app/#consultorio" },
+          "sameAs": ["https://www.instagram.com/dra.kamillevieira/"]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Com que frequência devo ir ao dentista?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Recomendamos visitas a cada 6 meses para check-ups e limpezas preventivas. Em casos de tratamentos específicos, o intervalo pode ser menor conforme orientação da Dra. Kamille." }
+            },
+            {
+              "@type": "Question",
+              "name": "Quais tratamentos odontológicos são oferecidos?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Tratamentos estéticos, preventivos e restauradores, incluindo lentes em resina, clareamento dental, limpeza profissional, restaurações, tratamento endodôntico (canal) e atendimentos de urgência em São Carlos." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Conteúdo de reserva: aparece para buscadores e sem JavaScript; o React substitui ao carregar -->
+      <main style="font-family: Georgia, serif; color: #fff; background: #1D0509; padding: 48px 24px; min-height: 100vh;">
+        <h1>Dra. Kamille Gallego Vieira, dentista em São Carlos</h1>
+        <p>Lentes em resina, clareamento dental, limpeza profissional, restaurações, tratamento de canal e urgências odontológicas. CRO-SP 170569.</p>
+        <p>Medical Center - R. Maestro João Seppe, 900 - Jardim Paraíso, São Carlos - SP, 13561-180. WhatsApp: (16) 99625-7573.</p>
+      </main>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

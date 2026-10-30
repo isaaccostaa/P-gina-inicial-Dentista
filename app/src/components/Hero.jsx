@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
-import { MessageCircle, ArrowRight } from 'lucide-react';
-import perfilImg from '../assets/perfil.jpeg';
-import logowhats from '../assets/logowhats.png';
-import logo from '../assets/Logosub2.png';
+import perfilImg from '../assets/perfil.webp';
+import logowhats from '../assets/logowhats.webp';
+import logo from '../assets/logo-kv.webp';
 
 function AnimatedCounter({ from, to, duration = 2 }) {
   const [count, setCount] = useState(from);
@@ -55,12 +54,12 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full flex justify-center mb-12"
+            className="w-full flex justify-center mb-10"
           >
             <img
               src={logo}
               alt="Dra. Kamille Gallego Vieira"
-              className="w-[300px] max-w-[88%] mx-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.18)] object-contain"
+              className="w-[250px] max-w-[80%] mx-auto object-contain"
             />
           </motion.div>
 
@@ -69,19 +68,20 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="font-heading text-[32px] font-black text-white leading-[1.2] text-center mb-5 mobile-text-shadow"
+            className="font-heading text-[44px] font-semibold text-white leading-[1.02] text-center mb-5"
           >
             Transformando <br />
-            Sorrisos <br />
-            <span className="font-serif italic font-normal text-[#E5C583]">em São Carlos</span>
+            sorrisos <br />
+            <span className="italic font-medium text-rose-gold">em São Carlos</span>
           </motion.h1>
+          <p className="eyebrow eyebrow-dark eyebrow-center !text-[10px] mb-6">Dentista · Lentes em resina</p>
 
           {/* 3. Texto de apoio (Subtexto menor e elegante) */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-[14px] text-white/80 text-center font-medium leading-relaxed mb-8 max-w-[340px]"
+            className="text-[14px] text-white/75 text-center leading-relaxed mb-8 max-w-[340px]"
           >
             Seu sorriso merece <strong>cuidado, atenção e confiança.</strong> Mais do que transformar sorrisos, meu propósito é devolver <strong>autoestima e segurança</strong> através de tratamentos odontológicos completos e humanizados.
           </motion.p>
@@ -95,10 +95,10 @@ export default function Hero() {
           >
             <a
               href="#secao-agendamento"
-              className="w-full max-w-xs px-6 py-5 bg-[#25D366] text-white rounded-full font-black text-xs tracking-[0.2em] uppercase flex items-center justify-center gap-3 hover:bg-[#20bd5c] transition-all duration-500 shadow-[0_20px_50px_rgba(37,211,102,0.4)] active:scale-[0.98]"
+              className="btn-gold w-full max-w-xs px-6 py-5"
             >
-              <img src={logowhats} alt="WhatsApp" className="w-5 h-5 object-contain" />
-              QUERO AGENDAR CONSULTA
+              <img src={logowhats} alt="" className="w-5 h-5 object-contain" />
+              Agendar avaliação
             </a>
           </motion.div>
 
@@ -112,7 +112,7 @@ export default function Hero() {
             <div className="relative w-full rounded-[2.5rem] overflow-hidden">
               <img
                 src={perfilImg}
-                alt="Dra. Kamille"
+                alt="Dra. Kamille Gallego Vieira, dentista em São Carlos"
                 className="w-full h-auto object-cover border border-white/5 object-center"
                 style={{ maxHeight: '420px', objectPosition: 'center 20%' }}
               />
@@ -155,7 +155,7 @@ export default function Hero() {
         <div className="hidden lg:block absolute right-0 top-0 bottom-0 lg:w-[40%] xl:w-[38%] z-0 overflow-hidden bg-transparent">
           <img
             src={perfilImg}
-            alt="Dra. Kamille"
+            alt="Dra. Kamille Gallego Vieira, dentista em São Carlos"
             className="w-full h-full object-cover opacity-95 select-none pointer-events-none object-center"
             style={{ objectPosition: 'center 20%' }}
           />
@@ -175,40 +175,33 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-[13px] font-bold uppercase tracking-wider mb-3 md:mb-6 bg-brand-light text-white border border-brand-light/30 md:bg-brand-light/15 md:text-brand-light md:border-brand-light/20 backdrop-blur-sm shadow-sm"
+                  className="eyebrow eyebrow-dark mb-4 md:mb-7"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-white md:bg-brand-light animate-pulse" />
                   <span>
-                    <span className="text-amber-300 md:text-[#D8B07A] font-extrabold text-sm md:text-[14px] mr-1">
+                    Dentista em São Carlos · <span className="text-rose-gold-light">
                       +<AnimatedCounter from={0} to={500} duration={2.5} />
                     </span>{" "}
-                    pacientes atendidos
+                    pacientes
                   </span>
                 </motion.div>
 
-                <motion.h1
+                <motion.p
+                  aria-hidden="true"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="font-heading text-[38px] lg:text-[64px] xl:text-[72px] font-black text-white leading-[1.15] lg:leading-[1.1] mb-3 lg:mb-6 mobile-text-shadow"
+                  className="font-heading text-[52px] lg:text-[80px] xl:text-[92px] font-semibold text-white leading-[1.08] lg:leading-[0.98] mb-4 lg:mb-8 mobile-text-shadow"
                 >
                   Transformando <br />
-                  Sorrisos <br />
-                  <span
-                    className="font-serif italic font-normal text-[#D8B07A]"
-                    style={{
-                      textShadow: '0 0 18px rgba(216,176,122,0.15)'
-                    }}
-                  >
-                    em São Carlos
-                  </span>
-                </motion.h1>
+                  sorrisos <br />
+                  <span className="italic font-medium text-rose-gold">em São Carlos</span>
+                </motion.p>
 
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2 }}
-                  className="text-[15px] lg:text-base xl:text-lg text-slate-200/90 lg:text-white/75 max-w-xl mb-4 lg:mb-8 leading-relaxed font-medium mobile-text-shadow"
+                  className="text-[15px] lg:text-base xl:text-lg text-slate-200/90 lg:text-white/70 max-w-lg mb-4 lg:mb-10 leading-relaxed mobile-text-shadow"
                 >
                   Seu sorriso merece <strong>cuidado, atenção e confiança.</strong> Mais do que transformar sorrisos, meu propósito é devolver <strong>autoestima e segurança</strong> através de tratamentos odontológicos completos e humanizados.
                 </motion.p>
@@ -222,16 +215,16 @@ export default function Hero() {
               >
                 <a
                   href="#secao-agendamento"
-                  className="w-full sm:w-auto px-6 py-[20px] md:px-10 md:py-6 bg-[#25D366] text-white rounded-full font-black text-sm sm:text-xs tracking-[0.2em] uppercase flex items-center justify-center gap-3 md:gap-4 hover:bg-[#20bd5c] transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.02] shadow-[0_20px_50px_rgba(37,211,102,0.3)] hover:shadow-[0_20px_50px_rgba(37,211,102,0.55)] active:scale-[0.98] group"
+                  className="btn-gold w-full sm:w-auto px-6 py-5 md:px-9 group"
                 >
-                  <img src={logowhats} alt="WhatsApp" className="w-7 h-7 md:w-6 md:h-6 object-contain group-hover:scale-110 transition-transform duration-500 ease-out" />
-                  QUERO AGENDAR CONSULTA
+                  <img src={logowhats} alt="" className="w-5 h-5 object-contain group-hover:scale-110 transition-transform duration-500 ease-out" />
+                  Agendar avaliação
                 </a>
                 <a
                   href="#sobre"
-                  className="w-full sm:w-auto px-8 py-[18px] md:px-12 md:py-6 bg-[#0B122C] text-white rounded-full font-black text-xs tracking-[0.2em] uppercase flex items-center justify-center gap-2 md:gap-4 border border-white/10 hover:bg-[#151f44] hover:border-white/30 transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.02] active:scale-[0.98]"
+                  className="btn-outline-light w-full sm:w-auto px-8 py-5 md:px-9"
                 >
-                  CONHECER DOUTORA ➔
+                  Conhecer a doutora
                 </a>
               </motion.div>
             </div>

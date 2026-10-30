@@ -173,23 +173,23 @@ export default function Testimonials() {
       
       <div className="max-w-7xl lg:max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-left md:flex-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-200/50 text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-6"
+              className="eyebrow mb-5"
             >
-              Feedback dos Pacientes
+              Avaliações no Google
             </motion.div>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-[34px] lg:text-[48px] xl:text-[56px] font-black text-slate-900 mb-4 md:mb-6 leading-tight"
+              className="text-[42px] lg:text-[56px] xl:text-[64px] font-semibold text-vinho mb-4 md:mb-6 leading-[1.02]"
             >
               O que dizem sobre <br />
-              <span style={{ color: '#8c141d' }}>nosso atendimento.</span>
+              <span className="italic font-medium text-rose-gold-dark">nosso atendimento</span>
             </motion.h2>
           </div>
 
@@ -197,10 +197,10 @@ export default function Testimonials() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-white p-6 md:p-10 lg:p-6 xl:p-8 rounded-[2rem] md:rounded-[3rem] shadow-premium border border-slate-100 flex flex-col items-center text-center w-full max-w-[280px] md:max-w-none mx-auto md:mx-0"
+            className="bg-white p-6 md:p-8 rounded-[2rem] shadow-premium border border-slate-100 flex flex-col items-center text-center w-full max-w-[280px] md:max-w-[320px] mx-auto md:mx-0 shrink-0"
           >
             <div className="flex items-center gap-1 text-yellow-400 mb-2">
-              <span className="text-3xl md:text-4xl font-black text-slate-900 mr-2">5.0</span>
+              <span className="font-heading text-4xl md:text-5xl font-semibold text-vinho mr-2">5.0</span>
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-current" />
@@ -256,12 +256,12 @@ export default function Testimonials() {
                 <img src={logoverification} alt="Verified" className="w-5 h-5 md:w-6 md:h-6 object-contain ml-2" />
               </div>
               
-              <p className="text-base md:text-lg text-slate-600 mb-6 md:mb-8 leading-relaxed font-medium italic flex-grow">
+              <p className="text-[15px] md:text-base text-slate-600 mb-6 md:mb-8 leading-relaxed flex-grow">
                 "{review.text}"
               </p>
  
               <div className="flex items-center gap-4 mt-auto">
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center font-bold text-[#8c141d] text-lg overflow-hidden border border-slate-200 shrink-0">
+                <div className="w-12 h-12 rounded-full bg-marfim flex items-center justify-center font-semibold text-rose-gold-dark text-lg overflow-hidden border border-slate-200 shrink-0">
                   {review.avatar ? (
                     <img src={review.avatar} alt={review.author} loading="lazy" className="w-full h-full object-cover" />
                   ) : (
@@ -269,7 +269,7 @@ export default function Testimonials() {
                   )}
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 leading-tight">{review.author}</h4>
+                  <h4 className="font-semibold text-vinho leading-tight">{review.author}</h4>
                   <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">{review.date}</p>
                 </div>
                 <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4 ml-auto opacity-30 shrink-0" />
@@ -301,7 +301,7 @@ export default function Testimonials() {
             }}
             aria-label={`Ir para depoimento ${index + 1}`}
             className={`transition-all duration-300 rounded-full ${
-              activeIndex === index ? 'w-8 h-2 bg-[#8c141d]' : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
+              activeIndex === index ? 'w-8 h-2 bg-vinho' : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
             }`}
           />
         ))}

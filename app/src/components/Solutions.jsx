@@ -9,13 +9,13 @@ import {
   Clock,
   ArrowRight
 } from 'lucide-react';
-import imgFaceta from '../assets/lente 1.PNG';
-import imgClareamento from '../assets/clareamentoz1.jpeg';
-import imgLimpeza from '../assets/limpeza3s.png';
-import imgCanal from '../assets/endodontia.png';
-import imgRestauracao from '../assets/restauração.png';
-import imgCirurgia from '../assets/cirurgiã dentista.png';
-import imgEmergencia from '../assets/ft2.jpeg';
+import imgFaceta from '../assets/lente_1.webp';
+import imgClareamento from '../assets/clareamentoz1.webp';
+import imgLimpeza from '../assets/limpeza3s.webp';
+import imgCanal from '../assets/endodontia.webp';
+import imgRestauracao from '../assets/restauracao.webp';
+import imgCirurgia from '../assets/cirurgia_dentista.webp';
+import imgEmergencia from '../assets/ft2.webp';
 
 export default function Solutions() {
   const mainHighlights = [
@@ -24,10 +24,11 @@ export default function Solutions() {
       description: "Procedimento estético realizado com resinas de alta qualidade para proporcionar harmonia, naturalidade e equilíbrio ao sorriso.",
       icon: <Palette className="w-8 h-8" />,
       image: imgFaceta,
-      color: "#B5526C",
+      color: "#8B3B4B",
+      resultados: true,
       prefill: {
-        servico: 'Facetas',
-        mensagem: 'Olá! Gostaria de saber como funciona o procedimento de facetas e tenho grande interesse em agendar uma avaliação para transformar meu sorriso.'
+        servico: 'Lentes em Resina',
+        mensagem: 'Olá! Gostaria de saber como funciona o procedimento de lentes em resina e tenho interesse em agendar uma avaliação para transformar meu sorriso.'
       }
     },
     {
@@ -35,7 +36,7 @@ export default function Solutions() {
       description: "Protocolos personalizados de consultório e caseiro para proporcionar mais luminosidade, naturalidade e harmonia estética aos dentes.",
       icon: <Sparkles className="w-8 h-8" />,
       image: imgClareamento,
-      color: "#B5526C",
+      color: "#8B3B4B",
       prefill: {
         servico: 'Clareamento',
         mensagem: 'Olá! Gostaria de entender como funciona o clareamento dental aqui na clínica e tenho interesse em agendar uma avaliação.'
@@ -46,7 +47,7 @@ export default function Solutions() {
       description: "Higienização completa e preventiva para remoção de placa e tártaro, garantindo a saúde duradoura da sua boca.",
       icon: <ShieldCheck className="w-8 h-8" />,
       image: imgLimpeza,
-      color: "#B5526C",
+      color: "#8B3B4B",
       prefill: {
         servico: 'Limpeza',
         mensagem: 'Olá! Gostaria de saber mais detalhes sobre como funciona a limpeza profissional (profilaxia) pois tenho interesse em agendar um horário.'
@@ -60,7 +61,7 @@ export default function Solutions() {
       description: "Tratamento realizado com técnicas modernas e precisão para preservar a estrutura dental de forma segura e eficiente.",
       icon: <Activity className="w-6 h-6" />,
       image: imgCanal,
-      color: "#B5526C",
+      color: "#8B3B4B",
       prefill: {
         servico: 'Canal (Endodontia)',
         mensagem: 'Olá! Gostaria de saber mais detalhes de como funciona o tratamento endodôntico (canal) e gostaria de agendar uma avaliação com a doutora.'
@@ -71,7 +72,7 @@ export default function Solutions() {
       description: "Restaurações planejadas para recuperar a integridade dental com precisão, resistência e qualidade funcional.",
       icon: <Smile className="w-6 h-6" />,
       image: imgRestauracao,
-      color: "#B5526C",
+      color: "#8B3B4B",
       prefill: {
         servico: 'Restauração',
         mensagem: 'Olá! Gostaria de entender melhor como funciona o procedimento de restauração e desejo agendar uma avaliação.'
@@ -82,7 +83,7 @@ export default function Solutions() {
       description: "Procedimentos cirúrgicos realizados com técnica avançada e total segurança.",
       icon: <HeartPulse className="w-6 h-6" />,
       image: imgCirurgia,
-      color: "#B5526C",
+      color: "#8B3B4B",
       prefill: {
         servico: 'Cirurgia',
         mensagem: 'Olá! Vi o perfil da Dra. Kamille e tenho interesse em agendar uma avaliação clínica com ela.'
@@ -93,7 +94,7 @@ export default function Solutions() {
       description: "Atendimento ágil para alívio imediato da dor e resolução de imprevistos dentais.",
       icon: <Clock className="w-6 h-6" />,
       image: imgEmergencia,
-      color: "#B5526C",
+      color: "#8B3B4B",
       prefill: {
         servico: 'Emergência',
         mensagem: 'Olá! Estou com uma emergência odontológica. Gostaria de saber sobre a disponibilidade imediata e desejo agendar um horário o quanto antes.'
@@ -132,12 +133,12 @@ export default function Solutions() {
       <div className="max-w-7xl lg:max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-200/50 text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-6"
+            className="eyebrow eyebrow-center mb-5"
           >
             Nossos Serviços
           </motion.div>
@@ -145,10 +146,9 @@ export default function Solutions() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[34px] lg:text-[48px] xl:text-[56px] font-black text-slate-900 leading-tight mb-6 md:mb-8"
+            className="text-[42px] lg:text-[56px] xl:text-[64px] font-semibold text-vinho leading-[1.02] mb-6 md:mb-8"
           >
-            Soluções <br />
-            <span style={{ color: '#B5526C' }}>Odontológicas.</span>
+            Soluções <span className="italic font-medium text-rose-gold-dark">odontológicas</span>
           </motion.h2>
         </div>
 
@@ -173,7 +173,7 @@ export default function Solutions() {
               </div>
 
               <div className="p-6 md:p-10 lg:p-6 xl:p-8 flex flex-col flex-grow">
-                <h3 className="text-xl md:text-2xl font-black text-slate-900 mb-3 md:mb-4 tracking-tight">{item.title}</h3>
+                <h3 className="text-xl md:text-2xl font-semibold text-vinho mb-3 md:mb-4">{item.title}</h3>
                 <p className="text-[15px] md:text-base text-slate-500 leading-relaxed font-medium mb-6 md:mb-10 flex-grow text-left">
                   {item.description}
                 </p>
@@ -188,6 +188,15 @@ export default function Solutions() {
                   Agendar Consulta
                   <ArrowRight className="w-4 h-4" />
                 </button>
+
+                {item.resultados && (
+                  <a
+                    href="#lentes"
+                    className="mt-4 text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-rose-gold-dark hover:text-vinho transition-colors"
+                  >
+                    Ver antes e depois →
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
@@ -214,7 +223,7 @@ export default function Solutions() {
               </div>
 
               <div className="p-6 md:p-8 lg:p-5 xl:p-6 flex flex-col flex-grow">
-                <h3 className="text-lg md:text-xl font-black text-slate-900 mb-2 md:mb-3 tracking-tight leading-tight min-h-[3rem] flex items-center">{item.title}</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-vinho mb-2 md:mb-3 leading-tight min-h-[3rem] flex items-center">{item.title}</h3>
                 <p className="text-slate-500 text-[14px] md:text-sm leading-relaxed font-medium mb-4 md:mb-6 flex-grow text-left">
                   {item.description}
                 </p>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
 import { HeartPulse } from 'lucide-react';
-import fotoKamille from '../assets/fotoKamille.jpg';
+import fotoKamille from '../assets/fotoKamille.webp';
 
 function AnimatedCounter({ from, to, duration = 2 }) {
   const [count, setCount] = useState(from);
@@ -27,7 +27,7 @@ function AnimatedCounter({ from, to, duration = 2 }) {
 export default function AboutDoctor() {
 
   return (
-    <section id="sobre" className="py-14 md:py-32 lg:py-20 xl:py-24 relative overflow-hidden bg-gradient-to-b from-[#3F0E16] via-[#3F0E16] to-white">
+    <section id="sobre" className="py-14 md:py-32 lg:py-20 xl:py-24 relative overflow-hidden bg-gradient-to-b from-[#3F0E16] to-brand-dark">
       {/* Decorative light elements */}
       <div className="absolute top-0 right-0 w-full h-full pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px]" />
@@ -66,11 +66,11 @@ export default function AboutDoctor() {
                 className="absolute -bottom-8 right-0 md:-right-4 lg:-right-12 bg-white/10 backdrop-blur-xl p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-premium border border-white/20 max-w-[200px] md:max-w-[240px] z-20"
               >
                 <div className="flex items-center gap-4 mb-2">
-                  <div className="w-12 h-12 bg-brand-base text-white rounded-full flex items-center justify-center shrink-0 shadow-lg shadow-brand-base/20">
+                  <div className="w-12 h-12 bg-rose-gold text-vinho rounded-full flex items-center justify-center shrink-0">
                     <HeartPulse className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="text-3xl font-black text-white">
+                    <h4 className="font-heading text-4xl font-semibold text-white">
                       +<AnimatedCounter from={0} to={500} duration={2.5} />
                     </h4>
                   </div>
@@ -88,9 +88,9 @@ export default function AboutDoctor() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white backdrop-blur-sm text-[10px] font-bold uppercase tracking-[0.2em] mb-6"
+                            className="eyebrow eyebrow-dark mb-5"
             >
-              Conheça a Doutora
+              Conheça a doutora
             </motion.div>
 
             <motion.h2
@@ -98,7 +98,7 @@ export default function AboutDoctor() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-[32px] lg:text-[40px] xl:text-[48px] font-black text-white leading-tight mb-2"
+              className="text-[40px] lg:text-[52px] xl:text-[60px] font-semibold text-white leading-[1.02] mb-3"
             >
               Dra. Kamille Gallego Vieira
             </motion.h2>
@@ -108,9 +108,9 @@ export default function AboutDoctor() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="text-xs md:text-sm font-bold uppercase tracking-wider text-brand-light md:text-slate-300 mb-6 md:mb-8"
+              className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.2em] text-rose-gold mb-6 md:mb-8"
             >
-              Odontologia Estética • Lentes em Resina | CRO-SP 170569
+              Cirurgiã-dentista em São Carlos · CRO-SP 170569
             </motion.p>
 
             <motion.h3
@@ -119,7 +119,7 @@ export default function AboutDoctor() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               translate="no"
-              className="notranslate text-[17px] lg:text-xl xl:text-2xl font-serif italic text-slate-300 mb-6 md:mb-8 leading-relaxed"
+              className="notranslate text-[22px] lg:text-[26px] xl:text-[28px] font-heading italic text-rose-gold-light mb-6 md:mb-8 leading-snug border-l border-rose-gold/40 pl-5"
             >
               "Minha missão é proporcionar uma experiência acolhedora e personalizada, ajudando cada paciente a se sentir mais feliz, leve e satisfeito ao sorrir."
             </motion.h3>
@@ -129,7 +129,7 @@ export default function AboutDoctor() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="space-y-6 text-[15px] lg:text-base xl:text-[17px] text-slate-300 font-medium leading-relaxed mb-8 md:mb-10"
+              className="space-y-5 text-[15px] lg:text-base text-white/70 leading-relaxed mb-8 md:mb-10"
             >
               <p>
                 Sou a Dra. Kamille Gallego Vieira, cirurgiã-dentista inscrita no CRO-SP 170569, com atuação voltada à Odontologia Estética e aos tratamentos relacionados à saúde bucal. Meu trabalho envolve procedimentos que buscam valorizar a harmonia do sorriso, preservando a naturalidade e respeitando as características de cada paciente.

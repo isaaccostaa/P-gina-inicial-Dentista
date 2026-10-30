@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, MessageCircle } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../assets/Logosub2.png';
-import logowhats from '../assets/logowhats.png';
+import logo from '../assets/logo-kv.webp';
+import logowhats from '../assets/logowhats.webp';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,9 +16,16 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const voltarAoTopo = (e) => {
+    e.preventDefault();
+    if (window.lenis) window.lenis.scrollTo(0);
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const navItems = [
     { name: 'Serviços', href: '#servicos' },
-    { name: 'Diferenciais', href: '#diferenciais' },
+    { name: 'Resultados', href: '#lentes' },
+    { name: 'Sobre', href: '#sobre' },
     { name: 'Depoimentos', href: '#depoimentos' },
     { name: 'Localização', href: '#localizacao' }
   ];
@@ -39,32 +46,31 @@ export default function Header() {
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.05] to-transparent pointer-events-none" />
 
       {/* Linha de Ouro Minimalista na Base */}
-      <div className="absolute bottom-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-brand-base/40 to-transparent" />
+      <div className="absolute bottom-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-rose-gold/40 to-transparent" />
       <div className="max-w-[1500px] mx-auto px-4 md:px-8 lg:px-12">
         <div className="flex items-center justify-between">
 
           {/* Logo - Esquerda (Monumental & Profissional) */}
-          <div className="flex items-center cursor-pointer group">
+          <a href="#" onClick={voltarAoTopo} className="flex items-center py-3" aria-label="Voltar ao topo">
             <img
               src={logo}
               alt="Dra. Kamille Gallego Vieira"
               loading="eager"
               decoding="async"
-              className={`transition-all duration-500 drop-shadow-[0_0_15px_rgba(212,175,55,0.2)] ${isScrolled ? 'h-14 md:h-18' : 'h-16 md:h-28'
-                } w-auto group-hover:scale-105`}
+              className={`transition-all duration-500 ${isScrolled ? 'h-10 md:h-14' : 'h-11 md:h-16'} w-auto`}
             />
-          </div>
+          </a>
 
           {/* Navigation - Centro */}
-          <nav className="hidden lg:flex items-center gap-12">
+          <nav className="hidden lg:flex items-center gap-10">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-[10px] font-black text-slate-300 hover:text-white uppercase tracking-[0.3em] transition-all duration-300 relative group"
+                className="text-[11px] font-medium text-white/70 hover:text-white uppercase tracking-[0.22em] transition-all duration-300 relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-base transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1.5 left-0 w-0 h-px bg-rose-gold transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </nav>
@@ -73,10 +79,10 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <a
               href="#secao-agendamento"
-              className="hidden md:flex items-center gap-3 px-8 py-3 bg-[#25D366] text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full hover:bg-[#20bd5c] transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-105 active:scale-[0.98] shadow-xl shadow-green-500/20 hover:shadow-green-500/40"
+              className="btn-gold hidden md:flex px-6 py-3 !text-[11px]"
             >
-              <img src={logowhats} alt="WhatsApp" loading="eager" decoding="async" className="w-5 h-5 object-contain" />
-              CONTATO
+              <img src={logowhats} alt="" loading="eager" decoding="async" className="w-4 h-4 object-contain" />
+              Agendar
             </a>
 
             <button
@@ -105,7 +111,7 @@ export default function Header() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-lg font-bold text-slate-300 hover:text-white transition-colors"
+                  className="font-heading text-2xl text-white/85 hover:text-rose-gold transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -113,11 +119,11 @@ export default function Header() {
               ))}
               <a
                 href="#secao-agendamento"
-                className="w-full py-5 bg-[#25D366] text-white flex items-center justify-center gap-3 font-black uppercase tracking-[0.2em] text-xs rounded-full shadow-lg transition-all duration-500 ease-out active:scale-[0.98]"
+                className="btn-gold w-full py-5"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <img src={logowhats} alt="WhatsApp" loading="lazy" decoding="async" className="w-6 h-6 object-contain" />
-                CONTATO
+                <img src={logowhats} alt="" loading="lazy" decoding="async" className="w-5 h-5 object-contain" />
+                Agendar avaliação
               </a>
             </div>
           </motion.div>

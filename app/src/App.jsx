@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import AboutDoctor from './components/AboutDoctor';
 import MarketingFeature from './components/MarketingFeature';
 import Solutions from './components/Solutions';
+import LentesResultados from './components/LentesResultados';
 import HowItWorks from './components/HowItWorks';
 import Testimonials from './components/Testimonials';
 import Transformations from './components/Transformations';
@@ -13,9 +14,9 @@ import Location from './components/Location';
 import Footer from './components/Footer';
 import FloatingDecorations from './components/FloatingDecorations';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
-import mainBg from './assets/fundo vinho.png';
-import planoDeFundoElegante from './assets/plano de fundo elegante.png';
-import planoDeFundoMobile from './assets/plano de fundo mobile.png';
+import mainBg from './assets/fundo_vinho.webp';
+import planoDeFundoElegante from './assets/plano_de_fundo_elegante.webp';
+import planoDeFundoMobile from './assets/plano_de_fundo_mobile.webp';
 import Lenis from 'lenis';
 
 function App() {
@@ -107,6 +108,7 @@ function App() {
           <div className="relative z-10">
             <MarketingFeature />
             <Solutions />
+            <LentesResultados />
             <HowItWorks />
           </div>
         </div>

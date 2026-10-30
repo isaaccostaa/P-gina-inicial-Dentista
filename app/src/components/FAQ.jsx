@@ -37,15 +37,15 @@ export default function FAQ() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white backdrop-blur-sm text-[10px] font-bold uppercase tracking-[0.2em] mb-6"
+                        className="eyebrow eyebrow-dark eyebrow-center mb-5"
           >
-            FAQ
+            Dúvidas
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[34px] lg:text-[40px] xl:text-[48px] font-black text-white leading-tight mb-6 md:mb-8"
+            className="text-[42px] lg:text-[52px] xl:text-[60px] font-semibold text-white leading-[1.02] mb-6 md:mb-8"
           >
             Perguntas frequentes
           </motion.h2>
@@ -65,13 +65,13 @@ export default function FAQ() {
                 className="w-full text-left px-5 md:px-8 lg:px-6 xl:px-8 py-4 md:py-6 lg:py-5 xl:py-6 flex items-center justify-between focus:outline-none"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <span className="text-[16px] md:text-lg font-bold text-white pr-8 leading-tight">
+                <span className="text-[16px] md:text-lg font-medium text-white pr-8 leading-snug">
                   {faq.question}
                 </span>
                 <motion.div
                   animate={{ rotate: openIndex === index ? 45 : 0 }}
                   transition={{ duration: 0.2 }}
-                  className="text-white shrink-0"
+                  className="text-rose-gold shrink-0"
                 >
                   <Plus className="w-6 h-6" />
                 </motion.div>

@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import tra1 from '../assets/tra1.png';
-import tra2 from '../assets/tra2.png';
+import tra1 from '../assets/tra1.webp';
+import tra2 from '../assets/tra2.webp';
 
 export default function Transformations() {
   const images = [tra1, tra2];
 
   return (
-    <section id="transformações" className="py-14 md:py-24 lg:py-20 xl:py-24 bg-[#1D0509] relative overflow-hidden">
+    <section id="transformacoes" className="py-14 md:py-24 lg:py-20 xl:py-24 bg-[#1D0509] relative overflow-hidden">
       {/* Decorative background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-brand-base/10 rounded-full blur-[150px]" />
@@ -18,18 +18,18 @@ export default function Transformations() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white backdrop-blur-sm text-[10px] font-bold uppercase tracking-[0.2em] mb-6"
+                        className="eyebrow eyebrow-dark eyebrow-center mb-5"
           >
-            Galeria de Resultados
+            Galeria de resultados
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[34px] lg:text-[48px] xl:text-[56px] font-black text-white mb-4 md:mb-6 leading-tight"
+            className="text-[42px] lg:text-[56px] xl:text-[64px] font-semibold text-white mb-4 md:mb-6 leading-[1.02]"
           >
             Transformações <br />
-            <span className="text-brand-light">em Detalhes.</span>
+            <span className="italic font-medium text-rose-gold">em detalhes</span>
           </motion.h2>
         </div>
         <motion.div 

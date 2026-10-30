@@ -1,13 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { User, Mail, MessageSquare, Send, ChevronDown, CheckCircle2, Loader2, Phone } from 'lucide-react';
-import photoBg from '../assets/photo.jpg';
+import { User, Mail, MessageSquare, ChevronDown, CheckCircle2, Loader2, Phone } from 'lucide-react';
+import photoBg from '../assets/photo.webp';
+import PrivacyModal from './PrivacyModal';
 
-import logowhats from '../assets/logowhats.png';
+import logowhats from '../assets/logowhats.webp';
+
+const WHATSAPP_NUMBER = '5516996257573';
+// Endereço que recebe as solicitações. O FormSubmit envia um "alias" aleatório no e-mail
+// de ativação: troque o e-mail por esse alias para não deixá-lo visível no código do site.
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/isaaccostaa1402@hotmail.com';
 
 export default function Scheduling() {
   const [isSending, setIsSending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [aceitouPolitica, setAceitouPolitica] = useState(false);
+  const [modalAberto, setModalAberto] = useState(null);
+  const fecharModal = useCallback(() => setModalAberto(null), []);
   const [formData, setFormData] = useState({
     nome: '',
     celular: '',
@@ -20,7 +29,7 @@ export default function Scheduling() {
     'Consulta Inicial',
     'Clareamento',
     'Limpeza',
-    'Facetas',
+    'Lentes em Resina',
     'Canal (Endodontia)',
     'Restauração',
     'Cirurgia',
@@ -69,11 +78,16 @@ export default function Scheduling() {
     return () => window.removeEventListener('prefillForm', handlePrefill);
   }, []);
 
-  const executeWhatsAppRedirect = () => {
-    const waMessage = encodeURIComponent(`Olá! ${formData.mensagem}`);
-    window.open(`https://wa.me/5516996257573?text=${waMessage}`, '_blank');
-    
-    // Resetar formulário
+  const buildWhatsAppUrl = () => {
+    const texto = [
+      `Olá, Dra. Kamille! Meu nome é ${formData.nome.trim()}.`,
+      `Tenho interesse em: ${formData.servico}.`,
+      formData.mensagem.trim()
+    ].filter(Boolean).join('\n');
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+  };
+
+  const resetForm = () => {
     setFormData({
       nome: '',
       celular: '',
@@ -81,14 +95,28 @@ export default function Scheduling() {
       servico: 'Consulta Inicial',
       mensagem: ''
     });
+    setAceitouPolitica(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSending(true);
 
+    const waUrl = buildWhatsAppUrl();
+    // A aba precisa ser aberta ainda dentro do clique; depois do await o navegador
+    // (principalmente no celular) bloqueia o pop-up.
+    const waWindow = window.open('', '_blank');
+
+    const abrirWhatsApp = () => {
+      if (waWindow && !waWindow.closed) {
+        waWindow.location.href = waUrl;
+      } else {
+        window.location.href = waUrl;
+      }
+    };
+
     try {
-      const response = await fetch('https://formsubmit.co/ajax/isaaccostaa1402@hotmail.com', {
+      const response = await fetch(FORMSUBMIT_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -104,24 +132,19 @@ export default function Scheduling() {
         })
       });
 
-      if (response.ok) {
-        setIsSending(false);
-        setIsSuccess(true);
-
-        // Redirecionamento para o WhatsApp após o envio bem-sucedido
-        setTimeout(() => {
-          executeWhatsAppRedirect();
-          setIsSuccess(false);
-        }, 1500);
-      } else {
+      if (!response.ok) {
         throw new Error('Erro no envio via FormSubmit AJAX');
       }
-
     } catch (error) {
-      console.error("Erro no envio do formulário, disparando envio nativo:", error);
-      // Fallback: submete nativamente se a chamada assíncrona falhar
-      e.target.submit();
+      // Mesmo sem o e-mail, o paciente segue para o WhatsApp com os dados na mensagem
+      console.error('Erro no envio do formulário:', error);
     }
+
+    setIsSending(false);
+    setIsSuccess(true);
+    abrirWhatsApp();
+    resetForm();
+    setTimeout(() => setIsSuccess(false), 4000);
   };
 
   return (
@@ -147,18 +170,18 @@ export default function Scheduling() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-brand-light backdrop-blur-sm text-[10px] font-bold uppercase tracking-[0.2em] mb-6"
+                className="eyebrow eyebrow-dark mb-5"
               >
-                Fale Conosco
+                Agendamento
               </motion.div>
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-[34px] lg:text-[48px] xl:text-[56px] font-black text-white mb-4 md:mb-6 leading-tight"
+                className="text-[42px] lg:text-[56px] xl:text-[64px] font-semibold text-white mb-4 md:mb-6 leading-[1.02]"
               >
-                Pronto para <br />
-                <span className="font-serif italic font-normal text-slate-300">seu novo sorriso?</span>
+                Pronto para o <br />
+                <span className="italic font-medium text-rose-gold">seu novo sorriso?</span>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -174,15 +197,9 @@ export default function Scheduling() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              action="https://formsubmit.co/isaaccostaa1402@hotmail.com"
-              method="POST"
               onSubmit={handleSubmit}
               className="space-y-4"
             >
-              {/* FormSubmit Configuration */}
-              <input type="hidden" name="_next" value="http://localhost:5173" />
-              <input type="hidden" name="_captcha" value="false" />
-
               {/* Campo Nome */}
               <div className="group relative">
                 <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
@@ -245,7 +262,7 @@ export default function Scheduling() {
                   name="Servico" 
                   value={formData.servico} 
                   onChange={handleInputChange}
-                  className="block w-full pl-14 pr-10 py-3.5 lg:py-4 bg-[#6B2D3A] border border-white/10 rounded-2xl text-base text-white outline-none focus:border-brand-light/50 appearance-none cursor-pointer relative z-0"
+                  className="block w-full pl-14 pr-10 py-3.5 lg:py-4 bg-white/5 border border-white/10 rounded-2xl text-base text-white outline-none focus:border-brand-light/50 appearance-none cursor-pointer relative z-0"
                 >
                   {servicios.map((s) => (
                     <option key={s} value={s} className="bg-[#1D0509] text-white py-2">{s}</option>
@@ -269,27 +286,45 @@ export default function Scheduling() {
                 />
               </div>
 
+              {/* Consentimento LGPD */}
+              <label className="flex items-start gap-3 px-1 text-[13px] text-slate-300 leading-relaxed cursor-pointer">
+                <input
+                  type="checkbox"
+                  required
+                  checked={aceitouPolitica}
+                  onChange={(e) => setAceitouPolitica(e.target.checked)}
+                  className="mt-1 w-4 h-4 shrink-0 accent-[#DAA78C] cursor-pointer"
+                />
+                <span>
+                  Li e concordo com a{' '}
+                  <button type="button" onClick={() => setModalAberto('privacidade')} className="underline hover:text-white">Política de Privacidade</button>
+                  {' '}e autorizo o uso dos meus dados para contato sobre o atendimento.
+                </span>
+              </label>
+
               {/* Botão de Envio com Estados */}
               <motion.button 
                 whileHover={!isSending && !isSuccess ? { scale: 1.02 } : {}}
                 whileTap={!isSending && !isSuccess ? { scale: 0.98 } : {}}
                 type="submit" 
                 disabled={isSending || isSuccess}
-                className={`w-full py-4 lg:py-4.5 rounded-2xl font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 shadow-2xl transition-all group ${isSuccess ? 'bg-green-600 text-white' : 'bg-[#25D366] text-white hover:bg-[#20bd5c]'}`}
+                className="btn-gold w-full py-5 group disabled:opacity-90"
               >
                 {isSending ? (
                   <>Enviando... <Loader2 className="w-5 h-5 animate-spin" /></>
                 ) : isSuccess ? (
-                  <>Agendamento Confirmado! <CheckCircle2 className="w-5 h-5" /></>
+                  <>Enviado! Abrindo WhatsApp <CheckCircle2 className="w-5 h-5" /></>
                 ) : (
-                  <>CONFIRMAR AGENDAMENTO <img src={logowhats} alt="WhatsApp" className="w-6 h-6 object-contain group-hover:scale-110 transition-transform" /></>
+                  <>SOLICITAR AGENDAMENTO <img src={logowhats} alt="WhatsApp" className="w-6 h-6 object-contain group-hover:scale-110 transition-transform" /></>
                 )}
               </motion.button>
 
               <p className="text-[11px] text-center text-slate-500 mt-6 px-8">
-                Ao informar meus dados, eu concordo com a <span className="underline cursor-pointer">Política de Privacidade</span> e com os <span className="underline cursor-pointer">Termos de Uso</span>.
+                O horário é confirmado pela equipe no WhatsApp. Veja também os{' '}
+                <button type="button" onClick={() => setModalAberto('termos')} className="underline hover:text-slate-300">Termos de Uso</button>.
               </p>
             </motion.form>
+            <PrivacyModal aberto={modalAberto} onFechar={fecharModal} />
           </div>
         </div>
       </div>

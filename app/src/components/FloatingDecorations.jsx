@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import ft1 from '../assets/ft1.jpeg';
-import ft2 from '../assets/ft2.jpeg';
-import ft3 from '../assets/ft3.jpeg';
+import ft1 from '../assets/ft1.webp';
+import ft2 from '../assets/ft2.webp';
+import ft3 from '../assets/ft3.webp';
 
 export default function FloatingDecorations() {
   return (

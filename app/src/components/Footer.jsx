@@ -1,14 +1,18 @@
+import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, MapPin } from 'lucide-react';
-import logo from '../assets/Logosub2.png';
-import logowhats from '../assets/logowhats.png';
-import logoinsta from '../assets/logoinsta.png';
+import { MapPin } from 'lucide-react';
+import PrivacyModal from './PrivacyModal';
+import { clinica } from '../data/clinica';
+import logo from '../assets/logo-kv.webp';
+import logowhats from '../assets/logowhats.webp';
+import logoinsta from '../assets/logoinsta.webp';
 
 export default function Footer() {
-  const whatsappNumber = "5516996257573";
-  const whatsappLink = `https://wa.me/${whatsappNumber}`;
-  const instagramLink = "https://www.instagram.com/dra.kamillevieira/";
-  const address = "R. Miguel Petroni, 1265 - Jardim Bandeirantes, São Carlos - SP, 13563-470";
+  const [modalAberto, setModalAberto] = useState(null);
+  const fecharModal = useCallback(() => setModalAberto(null), []);
+  const whatsappLink = `https://wa.me/${clinica.whatsapp}`;
+  const instagramLink = clinica.instagram;
+  const address = clinica.enderecoCompleto;
 
   return (
     <footer id="contato" className="bg-[#1D0509] text-white pt-12 md:pt-24 pb-24 md:pb-12 relative overflow-hidden">
@@ -25,14 +29,14 @@ export default function Footer() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white backdrop-blur-sm text-[10px] font-bold uppercase tracking-[0.2em] mb-6"
+              className="eyebrow eyebrow-dark mb-5"
             >
               Canais de Atendimento
             </motion.div>
-            <h2 className="text-[34px] md:text-6xl font-black mb-6 md:mb-8 leading-tight">
-              Fale <span className="text-brand-light">Conosco</span>
+            <h2 className="text-[42px] md:text-[64px] font-semibold mb-6 md:mb-8 leading-[1.05]">
+              Fale <span className="italic font-medium text-rose-gold">conosco</span>
             </h2>
-            <p className="text-[16px] md:text-xl text-slate-300 mb-8 md:mb-10 max-w-xl">
+            <p className="text-[16px] md:text-lg text-white/70 mb-8 md:mb-10 max-w-xl leading-relaxed">
               Estamos prontos para tirar suas dúvidas e agendar sua transformação. Escolha o canal de sua preferência.
             </p>
           </div>
@@ -43,13 +47,13 @@ export default function Footer() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-6 md:p-10 rounded-[28px] md:rounded-[2.5rem] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#25D366]/50 transition-all duration-500 shadow-2xl"
+              className="group p-6 md:p-8 rounded-[24px] md:rounded-[2rem] bg-white/[0.04] border border-white/10 hover:border-rose-gold/50 hover:bg-white/[0.07] transition-all duration-500"
             >
-              <div className="w-24 h-24 bg-[#25D366]/10 rounded-[24px] md:rounded-[2rem] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform shadow-inner">
-                <img src={logowhats} alt="WhatsApp" className="w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(37,211,102,0.6)] brightness-110" />
+              <div className="w-14 h-14 rounded-2xl border border-white/10 bg-white/[0.04] flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                <img src={logowhats} alt="" className="w-9 h-9 object-contain" />
               </div>
-              <h3 className="text-xl md:text-2xl font-black mb-2 tracking-tight">WhatsApp</h3>
-              <p className="text-slate-400 font-bold text-[15px] md:text-lg">(16) 99625-7573</p>
+              <h3 className="text-lg md:text-xl font-semibold mb-1">WhatsApp</h3>
+              <p className="text-white/60 text-[15px] md:text-base">{clinica.telefoneExibicao}</p>
             </a>
 
             {/* Card Instagram */}
@@ -57,29 +61,34 @@ export default function Footer() {
               href={instagramLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-6 md:p-10 rounded-[28px] md:rounded-[2.5rem] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-pink-500/50 transition-all duration-500 shadow-2xl"
+              className="group p-6 md:p-8 rounded-[24px] md:rounded-[2rem] bg-white/[0.04] border border-white/10 hover:border-rose-gold/50 hover:bg-white/[0.07] transition-all duration-500"
             >
-              <div className="w-24 h-24 bg-gradient-to-tr from-purple-600/30 to-pink-500/30 rounded-[24px] md:rounded-[2rem] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform shadow-inner">
-                <img src={logoinsta} alt="Instagram" className="w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(236,72,153,0.6)] brightness-110" />
+              <div className="w-14 h-14 rounded-2xl border border-white/10 bg-white/[0.04] flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                <img src={logoinsta} alt="" className="w-9 h-9 object-contain" />
               </div>
-              <h3 className="text-xl md:text-2xl font-black mb-2 tracking-tight">Instagram</h3>
-              <p className="text-slate-400 font-bold text-[15px] md:text-lg">@dra.kamillevieira</p>
+              <h3 className="text-lg md:text-xl font-semibold mb-1">Instagram</h3>
+              <p className="text-white/60 text-[15px] md:text-base">{clinica.instagramUsuario}</p>
             </a>
 
             {/* Card Endereço */}
-            <div className="col-span-1 sm:col-span-2 group p-6 md:p-8 rounded-[28px] md:rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500">
-              <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
-                <div className="w-14 h-14 bg-brand-light/20 rounded-2xl flex items-center justify-center shrink-0">
-                  <MapPin className="w-8 h-8 text-brand-light" />
+            <a
+              href={clinica.mapaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="col-span-1 sm:col-span-2 group p-6 md:p-8 rounded-[24px] md:rounded-[2rem] bg-white/[0.04] border border-white/10 hover:border-rose-gold/50 hover:bg-white/[0.07] transition-all duration-500"
+            >
+              <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
+                <div className="w-14 h-14 rounded-2xl border border-white/10 bg-white/[0.04] flex items-center justify-center shrink-0">
+                  <MapPin className="w-6 h-6 text-rose-gold" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Onde Estamos</h3>
-                  <p className="text-slate-400 font-medium leading-relaxed">
+                <address className="not-italic">
+                  <h3 className="text-lg md:text-xl font-semibold mb-1">Onde estamos</h3>
+                  <p className="text-white/60 leading-relaxed">
                     {address}
                   </p>
-                </div>
+                </address>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -89,16 +98,21 @@ export default function Footer() {
             <img
               src={logo}
               alt="Dra. Kamille Gallego Vieira"
-              className="h-16 md:h-20 w-auto opacity-80 hover:opacity-100 transition-opacity drop-shadow-xl"
+              className="h-12 md:h-14 w-auto opacity-90 hover:opacity-100 transition-opacity"
             />
           </div>
 
-          <div className="text-slate-500 font-bold text-[10px] md:text-xs uppercase tracking-widest text-center md:text-right">
-            <div>&copy; {new Date().getFullYear()} Dra. Kamille Gallego Vieira</div>
+          <div className="text-white/45 font-medium text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-center md:text-right">
+            <div>&copy; {new Date().getFullYear()} {clinica.nome} · {clinica.cro}</div>
             <div className="mt-1 opacity-60">Todos os direitos reservados.</div>
+            <div className="mt-3 flex gap-4 justify-center md:justify-end">
+              <button type="button" onClick={() => setModalAberto('privacidade')} className="uppercase tracking-widest hover:text-white transition-colors">Política de Privacidade</button>
+              <button type="button" onClick={() => setModalAberto('termos')} className="uppercase tracking-widest hover:text-white transition-colors">Termos de Uso</button>
+            </div>
           </div>
         </div>
       </div>
+      <PrivacyModal aberto={modalAberto} onFechar={fecharModal} />
     </footer>
   );
 }

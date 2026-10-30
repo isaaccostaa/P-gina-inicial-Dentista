@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import { useState, useEffect } from 'react';
-import logowhats from '../assets/logowhats.png';
+import logowhats from '../assets/logowhats.webp';
 
 export default function FloatingWhatsApp() {
   const [mounted, setMounted] = useState(false);
