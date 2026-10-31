@@ -1,6 +1,25 @@
 import { motion } from 'framer-motion';
 import { MapPin, Navigation, Building2 } from 'lucide-react';
 import { clinica } from '../data/clinica';
+import fotoConsultorio from '../assets/espaco-consultorio.webp';
+import fotoPredio from '../assets/espaco-predio.webp';
+
+const fotosEspaco = [
+  {
+    src: fotoConsultorio,
+    alt: 'Consultório da Dra. Kamille: cadeira odontológica em couro caramelo e iluminação suave',
+    rotulo: 'Consultório',
+    colunas: 'lg:col-span-5',
+    posicao: 'object-[50%_62%]',
+  },
+  {
+    src: fotoPredio,
+    alt: `Fachada do ${clinica.local}, em São Carlos`,
+    rotulo: clinica.local,
+    colunas: 'lg:col-span-7',
+    posicao: 'object-[48%_center]',
+  },
+];
 
 export default function Location() {
   return (
@@ -34,6 +53,32 @@ export default function Location() {
           >
             Atendimento no {clinica.local}, em São Carlos: um ambiente moderno e planejado para uma experiência leve, organizada e acolhedora.
           </motion.p>
+        </div>
+
+        {/* Fotos do espaço: consultório + fachada do Medical Center */}
+        <div className="grid grid-cols-2 lg:grid-cols-12 gap-3 md:gap-6 mb-6 md:mb-8">
+          {fotosEspaco.map((foto, i) => (
+            <motion.figure
+              key={foto.rotulo}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 + i * 0.1 }}
+              className={`group relative overflow-hidden rounded-[22px] md:rounded-[2rem] ring-1 ring-white/15 aspect-[3/4] lg:aspect-auto lg:h-[500px] ${foto.colunas}`}
+            >
+              <img
+                src={foto.src}
+                alt={foto.alt}
+                loading="lazy"
+                decoding="async"
+                className={`absolute inset-0 w-full h-full object-cover ${foto.posicao} transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]`}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1D0509]/90 via-[#1D0509]/20 to-transparent" />
+              <figcaption className="absolute inset-x-0 bottom-0 p-4 md:p-8">
+                <p className="text-[10px] md:text-[12px] font-semibold uppercase tracking-[0.24em] text-rose-gold">{foto.rotulo}</p>
+              </figcaption>
+            </motion.figure>
+          ))}
         </div>
 
         <motion.div

@@ -1,30 +1,20 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Clock, Calendar, Gift, MessageSquare } from 'lucide-react';
-import modelo from '../assets/modelo_1.webp';
 
 export default function HowItWorks() {
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
   return (
-    <section ref={sectionRef} className="py-10 md:py-20 bg-transparent relative overflow-hidden">
-      {/* Discreet Background Image with Advanced Masking */}
-      <motion.div 
-        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }}
-        className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
-      >
-        <img 
-          src={modelo} 
-          alt="" 
-          className="w-full h-full object-cover opacity-[0.12] grayscale-[30%] scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent" />
-      </motion.div>
+    <section className="pt-8 md:pt-12 pb-10 md:pb-20 bg-transparent relative overflow-hidden">
+      {/* Fundo animado: luzes rosé gold que flutuam devagar e fios dourados que se desenham.
+          Cada elemento tem um ritmo diferente, então a combinação quase nunca se repete. */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div className="aurora aurora-1" />
+        <div className="aurora aurora-2" />
+        <div className="aurora aurora-3" />
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="none" fill="none">
+          <path className="fio-ouro fio-ouro-1" pathLength="1" d="M-40 640 C 260 520, 420 760, 720 620 S 1180 380, 1480 520" />
+          <path className="fio-ouro fio-ouro-2" pathLength="1" d="M-40 260 C 300 380, 520 140, 820 250 S 1220 420, 1480 300" />
+        </svg>
+      </div>
 
       <div className="max-w-7xl lg:max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto mb-12 md:mb-16 px-4 text-center">

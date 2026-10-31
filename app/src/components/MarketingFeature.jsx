@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Sparkles, Heart, Play } from 'lucide-react';
 import videoMkt from '../assets/videomkt_web.mp4';
 import videoPoster from '../assets/videomkt-poster.webp';
-import logowhats from '../assets/logowhats.webp';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function MarketingFeature() {
   const [isMobile, setIsMobile] = useState(false);
@@ -52,7 +52,7 @@ export default function MarketingFeature() {
   }, [isMobile]); // Re-bind observer if active element changes due to resize
 
   return (
-    <section id="diferenciais" className="section-padding bg-transparent overflow-hidden">
+    <section id="diferenciais" className="pt-12 md:pt-32 pb-8 md:pb-12 bg-transparent overflow-hidden">
       <div className="max-w-7xl lg:max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
@@ -177,7 +177,6 @@ export default function MarketingFeature() {
                       ref={videoRef}
                       src={videoMkt}
                       poster={videoPoster}
-                    poster={videoPoster}
                       loop
                       playsInline
                       controls={isPlaying}
@@ -212,7 +211,7 @@ export default function MarketingFeature() {
                 transition={{ delay: 0.5 }}
                 className="btn-gold w-full sm:w-auto max-w-[320px] sm:max-w-none mx-auto lg:mx-0 px-10 py-5 group"
               >
-                <img src={logowhats} alt="" className="w-5 h-5 object-contain group-hover:scale-110 transition-transform" />
+                <WhatsAppIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 Agendar avaliação
               </motion.a>
             </div>

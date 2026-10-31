@@ -25,7 +25,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-14 md:py-24 lg:py-20 xl:py-24 bg-[#1D0509] relative overflow-hidden">
+    <section id="faq" className="pt-12 md:pt-16 pb-14 md:pb-24 lg:pb-20 xl:pb-24 bg-[#1D0509] relative overflow-hidden">
       {/* Decoração sutil de fundo */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-base/5 rounded-full blur-[120px]" />

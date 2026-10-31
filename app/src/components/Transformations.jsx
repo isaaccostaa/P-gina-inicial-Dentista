@@ -6,7 +6,7 @@ export default function Transformations() {
   const images = [tra1, tra2];
 
   return (
-    <section id="transformacoes" className="py-14 md:py-24 lg:py-20 xl:py-24 bg-[#1D0509] relative overflow-hidden">
+    <section id="transformacoes" className="pt-14 md:pt-24 lg:pt-20 xl:pt-24 pb-0 bg-[#1D0509] relative overflow-hidden">
       {/* Decorative background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-brand-base/10 rounded-full blur-[150px]" />

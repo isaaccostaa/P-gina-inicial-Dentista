@@ -4,8 +4,9 @@ import { MapPin } from 'lucide-react';
 import PrivacyModal from './PrivacyModal';
 import { clinica } from '../data/clinica';
 import logo from '../assets/logo-kv.webp';
-import logowhats from '../assets/logowhats.webp';
+import logowhats from '../assets/whatsapp-icone.webp';
 import logoinsta from '../assets/logoinsta.webp';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function Footer() {
   const [modalAberto, setModalAberto] = useState(null);
@@ -15,7 +16,7 @@ export default function Footer() {
   const address = clinica.enderecoCompleto;
 
   return (
-    <footer id="contato" className="bg-[#1D0509] text-white pt-12 md:pt-24 pb-24 md:pb-12 relative overflow-hidden">
+    <footer id="contato" className="bg-[#1D0509] text-white pt-12 md:pt-20 pb-24 md:pb-12 relative overflow-hidden border-t border-white/10">
       {/* Efeitos de iluminação de fundo */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-base/10 blur-[150px] rounded-full translate-x-1/3 -translate-y-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-base/5 blur-[120px] rounded-full -translate-x-1/3 translate-y-1/2 pointer-events-none" />
@@ -23,7 +24,7 @@ export default function Footer() {
       <div className="max-w-7xl lg:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Seção Principal: Fale Conosco */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20 items-start">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -39,6 +40,18 @@ export default function Footer() {
             <p className="text-[16px] md:text-lg text-white/70 mb-8 md:mb-10 max-w-xl leading-relaxed">
               Estamos prontos para tirar suas dúvidas e agendar sua transformação. Escolha o canal de sua preferência.
             </p>
+            {/* No desktop preenche a coluna ao lado dos cartões; no celular o cartão do WhatsApp já fica logo abaixo */}
+            <div className="hidden lg:block">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold px-8 py-5 group"
+              >
+                <WhatsAppIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                Conversar no WhatsApp
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -50,7 +63,7 @@ export default function Footer() {
               className="group p-6 md:p-8 rounded-[24px] md:rounded-[2rem] bg-white/[0.04] border border-white/10 hover:border-rose-gold/50 hover:bg-white/[0.07] transition-all duration-500"
             >
               <div className="w-14 h-14 rounded-2xl border border-white/10 bg-white/[0.04] flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                <img src={logowhats} alt="" className="w-9 h-9 object-contain" />
+                <img src={logowhats} alt="" className="w-8 h-8 object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold mb-1">WhatsApp</h3>
               <p className="text-white/60 text-[15px] md:text-base">{clinica.telefoneExibicao}</p>

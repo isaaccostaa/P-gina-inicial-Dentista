@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom';
 import { useState, useEffect } from 'react';
-import logowhats from '../assets/logowhats.webp';
+import { clinica } from '../data/clinica';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function FloatingWhatsApp() {
   const [mounted, setMounted] = useState(false);
@@ -14,25 +15,15 @@ export default function FloatingWhatsApp() {
 
   return createPortal(
     <a
-      href="https://wa.me/5516996257573"
+      href={`https://wa.me/${clinica.whatsapp}`}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="WhatsApp"
-      className="fixed bottom-[20px] left-[16px] md:bottom-8 md:right-8 md:left-auto bg-[#25D366] text-white rounded-full p-4 md:p-5 flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.35)] hover:scale-110 active:scale-95 transition-all duration-300"
-      style={{
-        zIndex: 2147483647,
-        backgroundColor: '#25D366',
-        opacity: 1,
-        pointerEvents: 'auto',
-        mixBlendMode: 'normal',
-        isolation: 'isolate'
-      }}
+      aria-label="Conversar no WhatsApp"
+      title="Conversar no WhatsApp"
+      className="whatsapp-flutuante fixed bottom-4 right-4 md:bottom-7 md:right-7 w-[52px] h-[52px] md:w-14 md:h-14 rounded-full flex items-center justify-center text-vinho hover:scale-110 active:scale-95 transition-transform duration-300"
+      style={{ zIndex: 2147483647 }}
     >
-      <img
-        src={logowhats}
-        alt="WhatsApp"
-        className="w-8 h-8 md:w-12 md:h-12 object-contain"
-      />
+      <WhatsAppIcon className="w-6 h-6 md:w-[26px] md:h-[26px] relative" />
     </a>,
     document.body
   );

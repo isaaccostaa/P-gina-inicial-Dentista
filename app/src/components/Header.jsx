@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo-kv.webp';
-import logowhats from '../assets/logowhats.webp';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -81,7 +81,7 @@ export default function Header() {
               href="#secao-agendamento"
               className="btn-gold hidden md:flex px-6 py-3 !text-[11px]"
             >
-              <img src={logowhats} alt="" loading="eager" decoding="async" className="w-4 h-4 object-contain" />
+              <WhatsAppIcon className="w-[18px] h-[18px]" />
               Agendar
             </a>
 
@@ -122,7 +122,7 @@ export default function Header() {
                 className="btn-gold w-full py-5"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <img src={logowhats} alt="" loading="lazy" decoding="async" className="w-5 h-5 object-contain" />
+                <WhatsAppIcon className="w-5 h-5" />
                 Agendar avaliação
               </a>
             </div>

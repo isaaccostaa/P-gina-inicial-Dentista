@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
-import perfilImg from '../assets/perfil.webp';
-import logowhats from '../assets/logowhats.webp';
+import perfilImg from '../assets/perfil-hero.webp';
+import WhatsAppIcon from './WhatsAppIcon';
 import logo from '../assets/logo-kv.webp';
 
 function AnimatedCounter({ from, to, duration = 2 }) {
@@ -97,7 +97,7 @@ export default function Hero() {
               href="#secao-agendamento"
               className="btn-gold w-full max-w-xs px-6 py-5"
             >
-              <img src={logowhats} alt="" className="w-5 h-5 object-contain" />
+              <WhatsAppIcon className="w-5 h-5" />
               Agendar avaliação
             </a>
           </motion.div>
@@ -135,6 +135,16 @@ export default function Hero() {
           background: 'linear-gradient(135deg, #1D0509 0%, #2B0810 50%, #130306 100%)'
         }}
       >
+        {/* Textura de seda no fundo, para o vinho não ficar liso */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <div className="hero-seda" />
+          <div className="hero-seda-faixa top-[48%]" />
+          <div className="hero-seda-brilho top-[56%]" />
+          <div className="hero-seda-brilho top-[70%] opacity-60" />
+          <div className="hero-seda-faixa top-[82%] opacity-80" />
+          <div className="hero-seda-brilho top-[88%] opacity-40" />
+        </div>
+
         {/* Mobile Background Image (Clean and professional) - for tablets */}
         <div className="lg:hidden absolute inset-0 z-0 overflow-hidden">
           <img
@@ -151,16 +161,16 @@ export default function Hero() {
           />
         </div>
 
-        {/* Desktop Widescreen Photo Container (High quality, no excessive stretch, sharp and professional) */}
-        <div className="hidden lg:block absolute right-0 top-0 bottom-0 lg:w-[40%] xl:w-[38%] z-0 overflow-hidden bg-transparent">
+        {/* Foto da doutora em painel à direita, com borda reta e fio claro (sem esfumado lateral) */}
+        <div className="hidden lg:block absolute right-0 top-0 bottom-0 lg:w-[36%] z-0 overflow-hidden border-l border-white/10">
           <img
             src={perfilImg}
             alt="Dra. Kamille Gallego Vieira, dentista em São Carlos"
-            className="w-full h-full object-cover opacity-95 select-none pointer-events-none object-center"
-            style={{ objectPosition: 'center 20%' }}
+            className="w-full h-full object-cover select-none pointer-events-none"
+            style={{ objectPosition: 'center 22%' }}
           />
-          {/* Soft, elegant wine gradient fade on the left edge of the photo to blend seamlessly with the dark background */}
-          <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-[#1D0509] via-[#1D0509]/80 to-transparent z-10 pointer-events-none" />
+          {/* Leve escurecimento na base para a foto assentar no fundo vinho */}
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#1D0509]/70 to-transparent pointer-events-none" />
         </div>
 
         <div className="max-w-7xl lg:max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
@@ -217,7 +227,7 @@ export default function Hero() {
                   href="#secao-agendamento"
                   className="btn-gold w-full sm:w-auto px-6 py-5 md:px-9 group"
                 >
-                  <img src={logowhats} alt="" className="w-5 h-5 object-contain group-hover:scale-110 transition-transform duration-500 ease-out" />
+                  <WhatsAppIcon className="w-5 h-5 group-hover:scale-110 transition-transform duration-500 ease-out" />
                   Agendar avaliação
                 </a>
                 <a

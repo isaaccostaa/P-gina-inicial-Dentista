@@ -4,7 +4,7 @@ import { User, Mail, MessageSquare, ChevronDown, CheckCircle2, Loader2, Phone } 
 import photoBg from '../assets/photo.webp';
 import PrivacyModal from './PrivacyModal';
 
-import logowhats from '../assets/logowhats.webp';
+import WhatsAppIcon from './WhatsAppIcon';
 
 const WHATSAPP_NUMBER = '5516996257573';
 // Endereço que recebe as solicitações. O FormSubmit envia um "alias" aleatório no e-mail
@@ -152,7 +152,7 @@ export default function Scheduling() {
       <div className="flex flex-col lg:flex-row lg:min-h-[720px]">
         
         {/* Coluna da Imagem (Esquerda) */}
-        <div className="w-full lg:w-1/2 absolute lg:relative inset-y-0 left-0 h-full">
+        <div className="w-full lg:w-1/2 absolute inset-y-0 left-0">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#1D0509] z-10 hidden lg:block" />
           <div className="absolute inset-0 bg-[#1D0509]/85 z-10 lg:hidden" />
           <img 
@@ -163,7 +163,7 @@ export default function Scheduling() {
         </div>
 
         {/* Coluna do Formulário (Direita) */}
-        <div className="w-full lg:w-1/2 relative z-20 flex items-center px-4 sm:px-6 lg:px-12 xl:px-16 py-8 md:py-24 lg:py-16 xl:py-20">
+        <div className="w-full lg:w-1/2 lg:ml-auto relative z-20 flex items-center px-4 sm:px-6 lg:px-12 xl:px-16 py-8 md:py-24 lg:py-16 xl:py-20">
           <div className="max-w-xl w-full mx-auto lg:mx-0">
             <div className="mb-6 md:mb-12">
               <motion.div
@@ -315,7 +315,7 @@ export default function Scheduling() {
                 ) : isSuccess ? (
                   <>Enviado! Abrindo WhatsApp <CheckCircle2 className="w-5 h-5" /></>
                 ) : (
-                  <>SOLICITAR AGENDAMENTO <img src={logowhats} alt="WhatsApp" className="w-6 h-6 object-contain group-hover:scale-110 transition-transform" /></>
+                  <>SOLICITAR AGENDAMENTO <WhatsAppIcon className="w-5 h-5 group-hover:scale-110 transition-transform" /></>
                 )}
               </motion.button>
 
