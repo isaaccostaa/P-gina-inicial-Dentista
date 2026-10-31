@@ -1,6 +1,8 @@
 // Gera as páginas estáticas de cada serviço em public/servicos/<slug>/index.html.
 // São HTML puro (sem React) para o Google ler tudo de primeira.
 // Para mudar textos: edite a lista "servicos" abaixo e rode  `npm run paginas`.
+// Campos opcionais: "chamada" (texto do bloco final) e "alt" (descrição da foto),
+// usados quando a página não deve citar a doutora pelo nome.
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -112,7 +114,7 @@ const servicos = [
     slug: 'tratamento-de-canal',
     nome: 'Tratamento de canal',
     titulo: 'Tratamento de canal em São Carlos',
-    descricao: 'Tratamento de canal (endodontia) em São Carlos com técnicas modernas para aliviar a dor e salvar o dente. Dra. Kamille Gallego Vieira, Medical Center. Agende pelo WhatsApp.',
+    descricao: 'Entenda como é feito o tratamento de canal (endodontia): quando é indicado, como funciona cada etapa e como fica o dente depois. Agende sua avaliação em São Carlos.',
     imagem: 'canal.webp',
     lead: 'O tratamento de canal trata a parte interna do dente quando ela está inflamada ou infeccionada. Ele alivia a dor e permite manter o dente natural na boca.',
     quando: [
@@ -122,7 +124,9 @@ const servicos = [
       'Inchaço ou bolinha na gengiva perto do dente',
       'Cárie profunda que chegou perto do nervo',
     ],
-    como: 'Com anestesia, a Dra. Kamille remove o tecido inflamado ou infeccionado de dentro do dente, limpa e desinfeta os canais e depois os preenche e veda. Ao final, o dente é restaurado para voltar a funcionar normalmente.',
+    como: 'O tratamento começa com um exame clínico e uma radiografia para ver a extensão do problema. Com o dente anestesiado, é feita uma pequena abertura para acessar a parte interna, onde o tecido inflamado ou infeccionado (a polpa) é removido. Os canais são limpos, modelados e desinfetados e, em seguida, preenchidos e vedados com um material próprio. Ao final, o dente recebe uma restauração para voltar a mastigar normalmente.',
+    chamada: 'Agende sua avaliação no Medical Center, em São Carlos.',
+    alt: 'Tratamento de canal (endodontia)',
     faq: [
       ['Tratamento de canal dói?', 'O procedimento é feito com anestesia, então a sensação é parecida com a de uma restauração. Pode haver um leve incômodo nos dias seguintes, que costuma passar rapidamente.'],
       ['Quantas sessões são necessárias?', 'Depende do dente e do caso. Alguns tratamentos são concluídos em uma sessão; outros precisam de mais de uma.'],
@@ -272,7 +276,7 @@ function pagina(s) {
             <a class="botao-contorno" href="/#secao-agendamento">Agendar pelo site</a>
           </div>
         </div>
-        <img class="capa-foto" src="/servicos/img/${s.imagem}" alt="${esc(s.nome)} - ${esc(clinica.nome)}" width="900" height="675" fetchpriority="high" />
+        <img class="capa-foto" src="/servicos/img/${s.imagem}" alt="${esc(s.alt || `${s.nome} - ${clinica.nome}`)}" width="900" height="675" fetchpriority="high" />
       </div>
     </section>
 
@@ -302,7 +306,7 @@ function pagina(s) {
     <section class="bloco chamada">
       <div class="caixa estreita centro">
         <h2>Agende sua <em>avaliação</em></h2>
-        <p>Atendimento com a ${esc(clinica.nome)} (${esc(clinica.cro)}) no Medical Center, em São Carlos.</p>
+        <p>${esc(s.chamada || `Atendimento com a ${clinica.nome} (${clinica.cro}) no Medical Center, em São Carlos.`)}</p>
         <a class="botao" href="${wa(s.mensagem)}" target="_blank" rel="noopener noreferrer">${iconeWhats}<span>Conversar no WhatsApp</span></a>
         <address>
           <a href="${clinica.mapa}" target="_blank" rel="noopener noreferrer">${esc(clinica.enderecoLinha1)}<br />${esc(clinica.enderecoLinha2)}</a><br />
