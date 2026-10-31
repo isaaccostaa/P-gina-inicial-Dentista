@@ -45,7 +45,7 @@ export default function FeaturesHighlights() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight"
+            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight"
           >
             Engenharia de elite. <br />
             <span className="text-slate-400">Simplicidade revolucionária.</span>

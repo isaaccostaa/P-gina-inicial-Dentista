@@ -8,6 +8,16 @@ import logowhats from '../assets/whatsapp-icone.webp';
 import logoinsta from '../assets/logoinsta.webp';
 import WhatsAppIcon from './WhatsAppIcon';
 
+const tratamentos = [
+  ['Urgência odontológica', 'urgencia-odontologica'],
+  ['Lentes em resina', 'lentes-em-resina'],
+  ['Clareamento dental', 'clareamento-dental'],
+  ['Limpeza dental', 'limpeza-dental'],
+  ['Tratamento de canal', 'tratamento-de-canal'],
+  ['Restauração dental', 'restauracao-dental'],
+  ['Cirurgia oral', 'cirurgia-oral'],
+];
+
 export default function Footer() {
   const [modalAberto, setModalAberto] = useState(null);
   const fecharModal = useCallback(() => setModalAberto(null), []);
@@ -105,6 +115,18 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Links para as páginas de cada tratamento (também ajudam o Google a encontrá-las) */}
+        <nav aria-label="Tratamentos" className="mb-12">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-rose-gold mb-4">Tratamentos em São Carlos</p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-3 text-[14px] text-white/70">
+            {tratamentos.map(([nome, slug]) => (
+              <li key={slug}>
+                <a href={`/servicos/${slug}/`} className="hover:text-rose-gold-light transition-colors">{nome}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         {/* Rodapé Inferior */}
         <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-3">
@@ -115,9 +137,9 @@ export default function Footer() {
             />
           </div>
 
-          <div className="text-white/45 font-medium text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-center md:text-right">
+          <div className="text-white/60 font-medium text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-center md:text-right">
             <div>&copy; {new Date().getFullYear()} {clinica.nome} · {clinica.cro}</div>
-            <div className="mt-1 opacity-60">Todos os direitos reservados.</div>
+            <div className="mt-1 opacity-80">Todos os direitos reservados.</div>
             <div className="mt-3 flex gap-4 justify-center md:justify-end">
               <button type="button" onClick={() => setModalAberto('privacidade')} className="uppercase tracking-widest hover:text-white transition-colors">Política de Privacidade</button>
               <button type="button" onClick={() => setModalAberto('termos')} className="uppercase tracking-widest hover:text-white transition-colors">Termos de Uso</button>

@@ -105,7 +105,7 @@ export default function PrivacyModal({ aberto, onFechar }) {
               <X className="w-5 h-5" />
             </button>
 
-            <h2 id="titulo-modal-legal" className="text-2xl md:text-3xl font-black text-slate-900 mb-6 pr-10">
+            <h2 id="titulo-modal-legal" className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 pr-10">
               {conteudo.titulo}
             </h2>
 

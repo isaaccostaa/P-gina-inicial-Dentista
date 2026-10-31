@@ -1,9 +1,9 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { googleReviews } from '../data/reviews';
-import logoverification from '../assets/Logoverification.png';
-import logoGoogle from '../assets/logoGoogle.png';
+import logoverification from '../assets/selo-verificado.webp';
+import logoGoogle from '../assets/logo-google.webp';
 
 export default function Testimonials() {
   const scrollRef = useRef(null);
@@ -13,16 +13,16 @@ export default function Testimonials() {
   const itemWidthRef = useRef(0);
   const scrollSpeed = 0.6; // Speed in pixels per frame
 
-  const updateItemWidth = () => {
+  const updateItemWidth = useCallback(() => {
     if (scrollRef.current) {
       const child = scrollRef.current.children[0];
       if (child) {
         itemWidthRef.current = child.offsetWidth + (window.innerWidth >= 768 ? 32 : 24);
       }
     }
-  };
+  }, []);
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (scrollRef.current) {
       const scrollPosition = scrollRef.current.scrollLeft;
       if (itemWidthRef.current === 0) {
@@ -33,7 +33,7 @@ export default function Testimonials() {
       const newIndex = Math.round(scrollPosition / itemWidth) % totalItems;
       setActiveIndex(newIndex);
     }
-  };
+  }, [updateItemWidth]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -43,13 +43,13 @@ export default function Testimonials() {
       handleScroll();
       return () => el.removeEventListener('scroll', handleScroll);
     }
-  }, []);
+  }, [handleScroll, updateItemWidth]);
 
   // Update item width on window resize
   useEffect(() => {
     window.addEventListener('resize', updateItemWidth);
     return () => window.removeEventListener('resize', updateItemWidth);
-  }, []);
+  }, [updateItemWidth]);
 
   // Global scroll listener to detect when user moves to another part of the page and resume autoplay
   useEffect(() => {
@@ -102,7 +102,7 @@ export default function Testimonials() {
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [isAutoplayActive]);
+  }, [isAutoplayActive, updateItemWidth]);
 
   // Dynamic pause on hover/touch
   useEffect(() => {
@@ -206,7 +206,7 @@ export default function Testimonials() {
                   <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-current" />
                 ))}
               </div>
-              <img src={logoverification} alt="Verified" className="w-8 h-8 md:w-10 md:h-10 object-contain ml-2 md:ml-3" />
+              <img src={logoverification} alt="Verificado" className="w-8 h-8 md:w-10 md:h-10 object-contain ml-2 md:ml-3" />
             </div>
             <img src={logoGoogle} alt="Google Reviews" className="h-8 md:h-12 object-contain mt-4 md:mt-6 opacity-80" />
           </motion.div>
@@ -253,7 +253,7 @@ export default function Testimonials() {
                     <Star key={i} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
-                <img src={logoverification} alt="Verified" className="w-5 h-5 md:w-6 md:h-6 object-contain ml-2" />
+                <img src={logoverification} alt="Verificado" className="w-5 h-5 md:w-6 md:h-6 object-contain ml-2" />
               </div>
               
               <p className="text-[15px] md:text-base text-slate-600 mb-6 md:mb-8 leading-relaxed flex-grow">
@@ -269,8 +269,8 @@ export default function Testimonials() {
                   )}
                 </div>
                 <div>
-                  <h4 className="font-semibold text-vinho leading-tight">{review.author}</h4>
-                  <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">{review.date}</p>
+                  <p className="font-semibold text-vinho leading-tight">{review.author}</p>
+                  <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">{review.date}</p>
                 </div>
                 <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4 ml-auto opacity-30 shrink-0" />
               </div>
@@ -300,10 +300,12 @@ export default function Testimonials() {
               }
             }}
             aria-label={`Ir para depoimento ${index + 1}`}
-            className={`transition-all duration-300 rounded-full ${
-              activeIndex === index ? 'w-8 h-2 bg-vinho' : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
-            }`}
-          />
+            className="group/ponto min-w-[24px] h-6 px-1 flex items-center justify-center"
+          >
+            <span className={`block transition-all duration-300 rounded-full ${
+              activeIndex === index ? 'w-8 h-2 bg-vinho' : 'w-2 h-2 bg-slate-300 group-hover/ponto:bg-slate-400'
+            }`} />
+          </button>
         ))}
       </div>
 
@@ -312,7 +314,7 @@ export default function Testimonials() {
           href="https://www.google.com/search?q=Dra.+Kamille+Vieira+São+Carlos+avaliações" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="w-full max-w-[320px] mx-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-slate-50 hover:shadow-lg hover:border-[#B5526C]/30 transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.02] active:scale-[0.98]"
+          className="w-full max-w-[320px] mx-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-slate-50 hover:shadow-lg hover:border-[#B5526C]/30 transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.02] active:scale-[0.98]"
         >
           Ver todas no Google Maps
         </a>

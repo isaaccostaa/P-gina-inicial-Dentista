@@ -3,9 +3,10 @@ import ft1 from '../assets/ft1.webp';
 import ft2 from '../assets/ft2.webp';
 import ft3 from '../assets/ft3.webp';
 
+// Só no computador: no celular essas camadas pesavam no carregamento sem aparecer quase nada
 export default function FloatingDecorations() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="hidden lg:block fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
       {/* Imagem 1: Topo Direito */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -18,7 +19,7 @@ export default function FloatingDecorations() {
           mixBlendMode: 'screen'
         }}
       >
-        <img src={ft1} alt="Decoração" className="w-full h-full object-cover rounded-full" />
+        <img src={ft1} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover rounded-full" />
       </motion.div>
 
       {/* Imagem 2: Meio Esquerda */}
@@ -33,7 +34,7 @@ export default function FloatingDecorations() {
           mixBlendMode: 'screen'
         }}
       >
-        <img src={ft2} alt="Decoração" className="w-full h-full object-cover rounded-full" />
+        <img src={ft2} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover rounded-full" />
       </motion.div>
 
       {/* Imagem 3: Base Direita */}
@@ -48,7 +49,7 @@ export default function FloatingDecorations() {
           mixBlendMode: 'screen'
         }}
       >
-        <img src={ft3} alt="Decoração" className="w-full h-full object-cover rounded-full" />
+        <img src={ft3} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover rounded-full" />
       </motion.div>
     </div>
   );

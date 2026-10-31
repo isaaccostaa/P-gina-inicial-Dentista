@@ -14,6 +14,7 @@ import imgEmergencia from '../assets/ft2.webp';
 const servicos = [
   {
     title: 'Lentes em Resina',
+    pagina: '/servicos/lentes-em-resina/',
     description: 'Procedimento estético realizado com resinas de alta qualidade para proporcionar harmonia, naturalidade e equilíbrio ao sorriso.',
     image: imgFaceta,
     resultados: true,
@@ -24,6 +25,7 @@ const servicos = [
   },
   {
     title: 'Clareamento Dental',
+    pagina: '/servicos/clareamento-dental/',
     description: 'Protocolos personalizados de consultório e caseiro para proporcionar mais luminosidade, naturalidade e harmonia estética aos dentes.',
     image: imgClareamento,
     prefill: {
@@ -33,6 +35,7 @@ const servicos = [
   },
   {
     title: 'Limpeza Profissional',
+    pagina: '/servicos/limpeza-dental/',
     description: 'Higienização completa e preventiva para remoção de placa e tártaro, garantindo a saúde duradoura da sua boca.',
     image: imgLimpeza,
     prefill: {
@@ -42,6 +45,7 @@ const servicos = [
   },
   {
     title: 'Tratamento de Canal',
+    pagina: '/servicos/tratamento-de-canal/',
     description: 'Tratamento realizado com técnicas modernas e precisão para preservar a estrutura dental de forma segura e eficiente.',
     image: imgCanal,
     prefill: {
@@ -51,6 +55,7 @@ const servicos = [
   },
   {
     title: 'Restauração',
+    pagina: '/servicos/restauracao-dental/',
     description: 'Restaurações planejadas para recuperar a integridade dental com precisão, resistência e qualidade funcional.',
     image: imgRestauracao,
     prefill: {
@@ -60,6 +65,7 @@ const servicos = [
   },
   {
     title: 'Cirurgia Oral',
+    pagina: '/servicos/cirurgia-oral/',
     description: 'Procedimentos cirúrgicos realizados com técnica avançada e total segurança.',
     image: imgCirurgia,
     prefill: {
@@ -69,6 +75,7 @@ const servicos = [
   },
   {
     title: 'Emergências',
+    pagina: '/servicos/urgencia-odontologica/',
     description: 'Atendimento ágil para alívio imediato da dor e resolução de imprevistos dentais.',
     image: imgEmergencia,
     prefill: {
@@ -132,6 +139,12 @@ function CardServico({ item, numero, destaque }) {
           {item.title}
         </h3>
         <p className="text-[15px] text-slate-500 leading-relaxed flex-grow">{item.description}</p>
+        <a
+          href={item.pagina}
+          className="mt-4 self-start text-[13px] font-semibold text-rose-gold-dark hover:text-vinho underline-offset-4 hover:underline transition-colors"
+        >
+          Saiba mais sobre {item.title.toLowerCase()} →
+        </a>
 
         <div className="mt-6 pt-5 border-t border-[#F1E8E3]">
           <button

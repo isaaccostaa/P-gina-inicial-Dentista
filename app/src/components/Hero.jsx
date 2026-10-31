@@ -104,8 +104,8 @@ export default function Hero() {
 
           {/* 5. Foto da Dra. Kamille integrada */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 30 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="w-full relative px-2 mt-4"
           >
@@ -113,6 +113,7 @@ export default function Hero() {
               <img
                 src={perfilImg}
                 alt="Dra. Kamille Gallego Vieira, dentista em São Carlos"
+                fetchPriority="high"
                 className="w-full h-auto object-cover border border-white/5 object-center"
                 style={{ maxHeight: '420px', objectPosition: 'center 20%' }}
               />
@@ -166,6 +167,7 @@ export default function Hero() {
           <img
             src={perfilImg}
             alt="Dra. Kamille Gallego Vieira, dentista em São Carlos"
+            fetchPriority="high"
             className="w-full h-full object-cover select-none pointer-events-none"
             style={{ objectPosition: 'center 22%' }}
           />

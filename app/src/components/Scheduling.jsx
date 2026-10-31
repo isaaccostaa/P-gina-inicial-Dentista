@@ -260,6 +260,7 @@ export default function Scheduling() {
                 </div>
                 <select 
                   name="Servico" 
+                  aria-label="Serviço desejado"
                   value={formData.servico} 
                   onChange={handleInputChange}
                   className="block w-full pl-14 pr-10 py-3.5 lg:py-4 bg-white/5 border border-white/10 rounded-2xl text-base text-white outline-none focus:border-brand-light/50 appearance-none cursor-pointer relative z-0"
