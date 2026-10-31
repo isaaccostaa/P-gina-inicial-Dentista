@@ -50,7 +50,7 @@ const servicos = [
     image: imgCanal,
     prefill: {
       servico: 'Canal (Endodontia)',
-      mensagem: 'Olá! Gostaria de saber mais detalhes de como funciona o tratamento endodôntico (canal) e gostaria de agendar uma avaliação com a doutora.'
+      mensagem: 'Olá! Gostaria de saber mais detalhes de como funciona o tratamento endodôntico (canal) e gostaria de agendar uma avaliação.'
     }
   },
   {

@@ -132,13 +132,13 @@ export default function AboutDoctor() {
               className="space-y-5 text-[15px] lg:text-base text-white/70 leading-relaxed mb-8 md:mb-10"
             >
               <p>
-                Sou a Dra. Kamille Gallego Vieira, cirurgiã-dentista inscrita no CRO-SP 170569, com atuação voltada à Odontologia Estética e aos tratamentos relacionados à saúde bucal. Meu trabalho envolve procedimentos que buscam valorizar a harmonia do sorriso, preservando a naturalidade e respeitando as características de cada paciente.
+                Atuo em Odontologia Estética e no cuidado da saúde bucal. Meu objetivo é realçar a beleza do seu sorriso sem apagar a sua identidade: resultados que parecem seus, nunca artificiais.
               </p>
               <p>
-                Realizo procedimentos como lentes em resina, clareamento dental, limpeza profissional, restaurações, tratamento endodôntico (canal) e atendimentos de urgência, sempre com planejamento personalizado e foco na naturalidade dos resultados.
+                No consultório, realizo lentes em resina, clareamento dental, limpeza profissional, restaurações e atendimentos de urgência. Todo tratamento começa com uma avaliação cuidadosa, em que analiso dentes, gengiva e traços do rosto para indicar o que realmente faz sentido para você.
               </p>
               <p>
-                Com atenção às particularidades de cada sorriso, acredito que a estética odontológica deve estar associada à naturalidade, harmonia e funcionalidade. Por isso, cada procedimento é planejado de forma criteriosa e personalizada, buscando resultados leves, equilibrados e alinhados às necessidades de cada paciente.
+                Acredito que estética e saúde caminham juntas. Por isso, explico cada etapa com clareza, respeito o seu tempo e planejo cada detalhe para que o resultado seja bonito, equilibrado e funcional.
               </p>
             </motion.div>
 
